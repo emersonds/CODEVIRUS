@@ -323,7 +323,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2533e59e703c7d540bbc6cdf489fbe32, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2533e59e703c7d540bbc6cdf489fbe32, type: 3}
@@ -406,7 +406,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 97831a04545ef5947974300fbfec0da4, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97831a04545ef5947974300fbfec0da4, type: 3}
@@ -489,7 +489,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 97831a04545ef5947974300fbfec0da4, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97831a04545ef5947974300fbfec0da4, type: 3}
@@ -570,6 +570,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Donut
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0b2cfcf0f737f35409c114420ba9ff9d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b2cfcf0f737f35409c114420ba9ff9d, type: 3}
 --- !u!4 &6651894639687378135 stripped
@@ -649,6 +653,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Donut
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0b2cfcf0f737f35409c114420ba9ff9d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b2cfcf0f737f35409c114420ba9ff9d, type: 3}
 --- !u!4 &6651894639619498783 stripped
@@ -727,6 +735,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0b2cfcf0f737f35409c114420ba9ff9d, type: 3}
       propertyPath: m_Name
       value: Donut
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0b2cfcf0f737f35409c114420ba9ff9d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b2cfcf0f737f35409c114420ba9ff9d, type: 3}
@@ -809,7 +821,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 97831a04545ef5947974300fbfec0da4, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97831a04545ef5947974300fbfec0da4, type: 3}
@@ -892,7 +904,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2533e59e703c7d540bbc6cdf489fbe32, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2533e59e703c7d540bbc6cdf489fbe32, type: 3}
@@ -975,7 +987,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2533e59e703c7d540bbc6cdf489fbe32, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2533e59e703c7d540bbc6cdf489fbe32, type: 3}
@@ -1058,7 +1070,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 97831a04545ef5947974300fbfec0da4, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97831a04545ef5947974300fbfec0da4, type: 3}
@@ -1139,6 +1151,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Donut
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0b2cfcf0f737f35409c114420ba9ff9d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b2cfcf0f737f35409c114420ba9ff9d, type: 3}
 --- !u!4 &6651894639023415534 stripped
@@ -1217,6 +1233,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0b2cfcf0f737f35409c114420ba9ff9d, type: 3}
       propertyPath: m_Name
       value: Donut
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0b2cfcf0f737f35409c114420ba9ff9d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b2cfcf0f737f35409c114420ba9ff9d, type: 3}
@@ -1299,7 +1319,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2533e59e703c7d540bbc6cdf489fbe32, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2533e59e703c7d540bbc6cdf489fbe32, type: 3}
@@ -1379,6 +1399,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0b2cfcf0f737f35409c114420ba9ff9d, type: 3}
       propertyPath: m_Name
       value: Donut
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0b2cfcf0f737f35409c114420ba9ff9d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b2cfcf0f737f35409c114420ba9ff9d, type: 3}
@@ -1461,7 +1485,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 97831a04545ef5947974300fbfec0da4, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97831a04545ef5947974300fbfec0da4, type: 3}
@@ -1544,7 +1568,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2533e59e703c7d540bbc6cdf489fbe32, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2533e59e703c7d540bbc6cdf489fbe32, type: 3}
@@ -1625,6 +1649,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Donut
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0b2cfcf0f737f35409c114420ba9ff9d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b2cfcf0f737f35409c114420ba9ff9d, type: 3}
 --- !u!4 &6651894638738617973 stripped
@@ -1703,6 +1731,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0b2cfcf0f737f35409c114420ba9ff9d, type: 3}
       propertyPath: m_Name
       value: Donut
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0b2cfcf0f737f35409c114420ba9ff9d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b2cfcf0f737f35409c114420ba9ff9d, type: 3}
@@ -1785,7 +1817,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 97831a04545ef5947974300fbfec0da4, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97831a04545ef5947974300fbfec0da4, type: 3}
@@ -1865,6 +1897,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0b2cfcf0f737f35409c114420ba9ff9d, type: 3}
       propertyPath: m_Name
       value: Donut
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0b2cfcf0f737f35409c114420ba9ff9d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b2cfcf0f737f35409c114420ba9ff9d, type: 3}
@@ -1947,7 +1983,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2533e59e703c7d540bbc6cdf489fbe32, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2533e59e703c7d540bbc6cdf489fbe32, type: 3}
@@ -2027,6 +2063,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0b2cfcf0f737f35409c114420ba9ff9d, type: 3}
       propertyPath: m_Name
       value: Donut
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0b2cfcf0f737f35409c114420ba9ff9d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b2cfcf0f737f35409c114420ba9ff9d, type: 3}
@@ -2109,7 +2149,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 97831a04545ef5947974300fbfec0da4, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97831a04545ef5947974300fbfec0da4, type: 3}
@@ -2192,7 +2232,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2533e59e703c7d540bbc6cdf489fbe32, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2533e59e703c7d540bbc6cdf489fbe32, type: 3}
@@ -2275,7 +2315,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 97831a04545ef5947974300fbfec0da4, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97831a04545ef5947974300fbfec0da4, type: 3}
@@ -2358,7 +2398,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 97831a04545ef5947974300fbfec0da4, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97831a04545ef5947974300fbfec0da4, type: 3}
@@ -2441,7 +2481,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2533e59e703c7d540bbc6cdf489fbe32, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2533e59e703c7d540bbc6cdf489fbe32, type: 3}
@@ -2524,7 +2564,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2533e59e703c7d540bbc6cdf489fbe32, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2533e59e703c7d540bbc6cdf489fbe32, type: 3}
@@ -2607,7 +2647,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 97831a04545ef5947974300fbfec0da4, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97831a04545ef5947974300fbfec0da4, type: 3}
@@ -2690,7 +2730,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2533e59e703c7d540bbc6cdf489fbe32, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2533e59e703c7d540bbc6cdf489fbe32, type: 3}
