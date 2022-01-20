@@ -19,21 +19,46 @@ public class Virus : MonoBehaviour
     private float amplitude;        // How high/low the virus moves
     [SerializeField]
     private float frequency;        // How fast the virus move up/down
-
-    private Vector3 posOffset = new Vector3();
-    private Vector3 tempPos = new Vector3();
+    private Vector3 posOffset = new Vector3();  // Initial position
+    private Vector3 tempPos = new Vector3();    // New position
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         // Store starting position for movement
         posOffset = transform.position;
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        Move();
+        Click();        // Checks for player clicks
+        Move();         // Virus moving and spinning animation
+    }
+
+    /// <summary>
+    /// Checks for player clicks and increments points when the player clicks the virus
+    /// </summary>
+    private void Click()
+    {
+        // Check for click input
+        if (Input.GetMouseButtonDown(0))
+        {
+            // Create ray at mouse position
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            // Check if ray hit the virus
+            if (Physics.Raycast(ray, out hit))
+            {
+                if (hit.transform.name == "Virus")
+                {
+                    // Points stuff here ...
+
+                    Debug.Log("Player clicked virus.");
+                }
+            }
+        }
     }
 
     private void Move()
