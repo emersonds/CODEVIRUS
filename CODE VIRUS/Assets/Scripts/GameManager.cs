@@ -9,22 +9,27 @@ public class GameManager : MonoBehaviour
 {
     // Points
     [SerializeField]
-    private int defaultClickValue;
+    private int defaultClickValue = 1;
     [SerializeField]
-    private int mutationPoints;
+    private int mutationPoints = 0;
     [SerializeField]
-    private int mutationPointsPerMin;
+    private int mutationPointsPerMin = 0;
     [SerializeField]
-    private float mutationPointsMultiplier;
+    private float mutationPointsMultiplier = 1;
+
+    private void Awake()
+    {
+        // Singleton stuff
+    }
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        StartCoroutine(PrintPoints());
+
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         AddMutationPoints("Passive");
     }
@@ -38,18 +43,8 @@ public class GameManager : MonoBehaviour
                 break;
 
             case ("Passive"):
-                mutationPoints += (int)((mutationPointsPerMin * Time.fixedDeltaTime) * mutationPointsMultiplier);
+                mutationPoints += (int)((mutationPointsPerMin * Time.deltaTime) * mutationPointsMultiplier);
                 break;
         }
-    }
-
-    /// <summary>
-    /// Temporary coroutine until UI is created.
-    /// </summary>
-    /// <returns></returns>
-    private IEnumerator PrintPoints()
-    {
-        Debug.Log("Current points: " + mutationPoints);
-        yield return new WaitForSeconds(2f);
     }
 }
