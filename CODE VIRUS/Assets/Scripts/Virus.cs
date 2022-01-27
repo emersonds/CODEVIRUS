@@ -11,6 +11,11 @@ public class Virus : MonoBehaviour
     private GameObject[] mushrooms = new GameObject[10];
     [SerializeField]
     private GameObject[] donuts = new GameObject[10];
+    
+    // Public reference to parts
+    public GameObject[] Spikes { get { return spikes; } }
+    public GameObject[] Mushrooms { get { return mushrooms; } }
+    public GameObject[] Donuts { get { return donuts; } }
 
     // Rotation/Hovering Values
     [SerializeField]
@@ -70,5 +75,17 @@ public class Virus : MonoBehaviour
         tempPos = posOffset;
         tempPos.y += Mathf.Sin(Time.fixedTime * Mathf.PI * frequency) * amplitude;
         transform.position = tempPos;
+    }
+
+    /// <summary>
+    /// Shows a part of the virus corresponding to an upgrade.
+    /// </summary>
+    /// <param name="arr">Virus part</param>
+    /// <param name="counter">Array Index: Which part to show.</param>
+    public void ShowUpgrade(GameObject[] arr, int counter)
+    {
+        // Checks if array is null before setting active the part at the index
+        if (arr != null)
+            arr[counter].SetActive(true);
     }
 }

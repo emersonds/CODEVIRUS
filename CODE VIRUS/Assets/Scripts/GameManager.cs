@@ -17,6 +17,14 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private float mutationPointsMultiplier = 1;
 
+    // Upgrade variables
+    private int infectCounter = 0;      // Used for showing mushrooms
+    private int lethalCounter = 0;      // Used for showing spikes
+    private int resilienceCounter = 0;  // Used for showing donuts
+
+    // Reference to virus
+    private Virus virus;
+
     private void Awake()
     {
         // Singleton stuff
@@ -25,7 +33,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-
+        virus = GameObject.Find("Virus").GetComponent<Virus>();
     }
 
     // Update is called once per frame
@@ -44,6 +52,42 @@ public class GameManager : MonoBehaviour
 
             case ("Passive"):
                 mutationPoints += (int)((mutationPointsPerMin * Time.deltaTime) * mutationPointsMultiplier);
+                break;
+        }
+    }
+
+    public void UpgradeVirus(string upgrade)
+    {
+        switch (upgrade)
+        {
+            case ("infect"):
+                // Upgrade stuff
+
+                // Show part
+                virus.ShowUpgrade(virus.Mushrooms, infectCounter);
+                infectCounter++;
+                break;
+            case ("lethal"):
+                // Upgrade stuff
+
+                // Show part
+                virus.ShowUpgrade(virus.Spikes, lethalCounter);
+                lethalCounter++;
+                break;
+            case ("resilience"):
+                // Upgrade stuff
+
+                // Show part
+                virus.ShowUpgrade(virus.Donuts, resilienceCounter);
+                resilienceCounter++;
+                break;
+            case ("clicker"):
+                // Upgrade stuff
+
+                break;
+            case ("income"):
+                // Upgrade stuff
+
                 break;
         }
     }
