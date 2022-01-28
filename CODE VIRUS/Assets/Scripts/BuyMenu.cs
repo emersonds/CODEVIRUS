@@ -11,6 +11,8 @@ public class BuyMenu : MonoBehaviour
     private Text context;       // Context tips like price, what points mean
     [SerializeField]
     private Text infected;      // Contains infected and death count
+    [SerializeField]
+    private GameObject instructions;    // Instructions panel
 
     // Start is called before the first frame update
     void Start()
@@ -57,5 +59,13 @@ public class BuyMenu : MonoBehaviour
     public void ClearContext()
     {
         context.text = "";
+    }
+
+    public void ShowInstructions(bool show)
+    {
+        if (show)
+            instructions.SetActive(true);
+        else
+            instructions.SetActive(false);
     }
 }
