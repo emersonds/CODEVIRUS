@@ -11,11 +11,23 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private int defaultClickValue = 1;
     [SerializeField]
-    private int mutationPoints = 0;
-    [SerializeField]
     private int mutationPointsPerMin = 0;
     [SerializeField]
     private float mutationPointsMultiplier = 1;
+    [SerializeField]
+    private int infectedPerMin = 0;
+    [SerializeField]
+    private float infectedMultiplier = 1;
+    [SerializeField]
+    private int deathsPerMin = 0;
+    [SerializeField]
+    private float deathMultiplier = 0;
+
+    private int mutationPoints = 0;
+    private int infectedPoints = 0;
+    private int deathPoints = 0;
+
+    public int MutationPoints { get { return mutationPoints; } }
 
     // Upgrade variables
     private int infectCounter = 0;      // Used for showing mushrooms
@@ -25,9 +37,25 @@ public class GameManager : MonoBehaviour
     // Reference to virus
     private Virus virus;
 
+    // Reference to self
+    public static GameManager GM;
+
     private void Awake()
     {
-        // Singleton stuff
+        // Checks if a GameManager instance exists and destroys it
+        // Singleton pattern to ensure the first GameManager loaded is the one that persists
+        if (GM == null)
+        {
+            GM = this;                                                // sets current GameManager object as instance if no other exists
+        }
+        else
+        {
+            Destroy(gameObject);                                            // destroys self if there already exists another instance; breaks loop
+            return;
+        }
+
+        // Makes the GameManager game object persistent through multiple scenes
+        DontDestroyOnLoad(gameObject);
     }
 
     // Start is called before the first frame update
@@ -65,21 +93,24 @@ public class GameManager : MonoBehaviour
 
                 // Show part
                 virus.ShowUpgrade(virus.Mushrooms, infectCounter);
-                infectCounter++;
+                if (infectCounter < 10)
+                    infectCounter++;
                 break;
             case ("lethal"):
                 // Upgrade stuff
 
                 // Show part
                 virus.ShowUpgrade(virus.Spikes, lethalCounter);
-                lethalCounter++;
+                if (lethalCounter < 10)
+                    lethalCounter++;
                 break;
             case ("resilience"):
                 // Upgrade stuff
 
                 // Show part
                 virus.ShowUpgrade(virus.Donuts, resilienceCounter);
-                resilienceCounter++;
+                if (resilienceCounter < 10)
+                    resilienceCounter++;
                 break;
             case ("clicker"):
                 // Upgrade stuff
