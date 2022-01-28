@@ -11,25 +11,47 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private int defaultClickValue = 1;
     [SerializeField]
+    private int mutationPoints = 0;
+    [SerializeField]
     private int mutationPointsPerMin = 0;
     [SerializeField]
     private float mutationPointsMultiplier = 1;
+    [SerializeField]
+    private int infectedPoints = 0;
     [SerializeField]
     private int infectedPerMin = 0;
     [SerializeField]
     private float infectedMultiplier = 1;
     [SerializeField]
+    private int deathPoints = 0;
+    [SerializeField]
     private int deathsPerMin = 0;
     [SerializeField]
     private float deathMultiplier = 0;
 
-    private int mutationPoints = 0;
-    private int infectedPoints = 0;
-    private int deathPoints = 0;
-
     public int MutationPoints { get { return mutationPoints; } }
+    public int InfectedPoints { get { return infectedPoints; } }
+    public int DeathPoints { get { return deathPoints; } }
+
 
     // Upgrade variables
+    [SerializeField]
+    private int infectCost = 5;         // Base upgrade cost
+    [SerializeField]
+    private int lethalCost = 5;         // Base upgrade cost
+    [SerializeField]
+    private int resilienceCost = 5;     // Base upgrade cost
+    [SerializeField]
+    private int clickerCost = 5;        // Base upgrade cost
+    [SerializeField]
+    private int incomeCost = 5;         // Base upgrade cost
+
+    public int InfectCost { get { return infectCost; } }
+    public int LethalCost { get { return lethalCost; } }
+    public int ResilienceCost { get { return resilienceCost; } }
+    public int ClickerCost { get { return clickerCost; } }
+    public int IncomeCost { get { return incomeCost; } }
+
     private int infectCounter = 0;      // Used for showing mushrooms
     private int lethalCounter = 0;      // Used for showing spikes
     private int resilienceCounter = 0;  // Used for showing donuts
@@ -72,14 +94,14 @@ public class GameManager : MonoBehaviour
 
     public void AddMutationPoints(string source)
     {
-        switch(source)
+        switch (source)
         {
             case ("Click"):
-                mutationPoints += (int)(defaultClickValue * mutationPointsMultiplier);
+                mutationPoints += defaultClickValue;
                 break;
 
             case ("Passive"):
-                mutationPoints += (int)((mutationPointsPerMin * Time.deltaTime) * mutationPointsMultiplier);
+                //mutationPoints += (int)((mutationPointsPerMin * Time.deltaTime) * mutationPointsMultiplier);
                 break;
         }
     }
@@ -89,36 +111,53 @@ public class GameManager : MonoBehaviour
         switch (upgrade)
         {
             case ("infect"):
-                // Upgrade stuff
+                if (infectCounter < 9 && (mutationPoints - infectCost >= 0))
+                {
+                    // Upgrade stuff
+                    mutationPoints -= infectCost;
+                    infectCost *= 2;
 
-                // Show part
-                virus.ShowUpgrade(virus.Mushrooms, infectCounter);
-                if (infectCounter < 10)
+                    // Show part
+                    virus.ShowUpgrade(virus.Mushrooms, infectCounter);
                     infectCounter++;
+                }
                 break;
             case ("lethal"):
-                // Upgrade stuff
+                if (lethalCounter < 9 && (mutationPoints - lethalCost >= 0))
+                {
+                    // Upgrade stuff
+                    mutationPoints -= lethalCost;
+                    lethalCost *= 2;
 
-                // Show part
-                virus.ShowUpgrade(virus.Spikes, lethalCounter);
-                if (lethalCounter < 10)
+                    // Show part
+                    virus.ShowUpgrade(virus.Spikes, lethalCounter);
                     lethalCounter++;
+                }
                 break;
             case ("resilience"):
-                // Upgrade stuff
+                if (resilienceCounter < 9 && (mutationPoints - resilienceCost >= 0))
+                {
+                    // Upgrade stuff
+                    mutationPoints -= resilienceCost;
+                    resilienceCost *= 2;
 
-                // Show part
-                virus.ShowUpgrade(virus.Donuts, resilienceCounter);
-                if (resilienceCounter < 10)
+                    // Show part
+                    virus.ShowUpgrade(virus.Donuts, resilienceCounter);
                     resilienceCounter++;
+                }
                 break;
             case ("clicker"):
                 // Upgrade stuff
-
+                if (mutationPoints - clickerCost >= 0)
+                {
+                    mutationPoints -= clickerCost;
+                    clickerCost *= 2;
+                    defaultClickValue *= 2;
+                }
                 break;
             case ("income"):
                 // Upgrade stuff
-
+                // PASSIVE INCOME NOT YET IMPLEMENTED SO DONT WORRY ABOUT THIS
                 break;
         }
     }

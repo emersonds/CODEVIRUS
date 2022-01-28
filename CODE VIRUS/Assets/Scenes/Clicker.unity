@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 161292654}
   - component: {fileID: 161292656}
   - component: {fileID: 161292655}
+  - component: {fileID: 161292657}
   m_Layer: 5
   m_Name: Points Text
   m_TagString: Untagged
@@ -158,7 +159,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -100}
-  m_SizeDelta: {x: 245.809, y: 62.689}
+  m_SizeDelta: {x: 772.57, y: 87.979}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &161292655
 MonoBehaviour:
@@ -186,7 +187,7 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 40
+    m_MaxSize: 45
     m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -202,6 +203,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 161292653}
   m_CullTransparentMesh: 1
+--- !u!114 &161292657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 161292653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1149198261}
+          m_TargetAssemblyTypeName: BuyMenu, Assembly-CSharp
+          m_MethodName: SetContext
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: points
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1149198261}
+          m_TargetAssemblyTypeName: BuyMenu, Assembly-CSharp
+          m_MethodName: ClearContext
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &266673729
 GameObject:
   m_ObjectHideFlags: 0
@@ -236,8 +282,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -100}
-  m_SizeDelta: {x: 466.29, y: 60.91}
+  m_AnchoredPosition: {x: 0, y: -130}
+  m_SizeDelta: {x: 660.178, y: 117.109}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &266673731
 MonoBehaviour:
@@ -266,13 +312,13 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
-    m_Alignment: 4
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '[PRICE}'
+  m_Text: '[PRICE]'
 --- !u!222 &266673732
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -293,6 +339,7 @@ GameObject:
   - component: {fileID: 477309650}
   - component: {fileID: 477309649}
   - component: {fileID: 477309648}
+  - component: {fileID: 477309651}
   m_Layer: 5
   m_Name: Income Button
   m_TagString: Untagged
@@ -359,7 +406,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 477309649}
   m_OnClick:
     m_PersistentCalls:
@@ -414,6 +461,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 477309646}
   m_CullTransparentMesh: 1
+--- !u!114 &477309651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 477309646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1149198261}
+          m_TargetAssemblyTypeName: BuyMenu, Assembly-CSharp
+          m_MethodName: SetContext
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: income
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1149198261}
+          m_TargetAssemblyTypeName: BuyMenu, Assembly-CSharp
+          m_MethodName: ClearContext
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &524776648
 GameObject:
   m_ObjectHideFlags: 0
@@ -426,6 +518,7 @@ GameObject:
   - component: {fileID: 524776652}
   - component: {fileID: 524776651}
   - component: {fileID: 524776650}
+  - component: {fileID: 524776653}
   m_Layer: 5
   m_Name: Clicks Button
   m_TagString: Untagged
@@ -547,6 +640,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 524776648}
   m_CullTransparentMesh: 1
+--- !u!114 &524776653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524776648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1149198261}
+          m_TargetAssemblyTypeName: BuyMenu, Assembly-CSharp
+          m_MethodName: SetContext
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: clicker
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1149198261}
+          m_TargetAssemblyTypeName: BuyMenu, Assembly-CSharp
+          m_MethodName: ClearContext
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -814,6 +952,7 @@ GameObject:
   - component: {fileID: 813459544}
   - component: {fileID: 813459543}
   - component: {fileID: 813459542}
+  - component: {fileID: 813459545}
   m_Layer: 5
   m_Name: Infectivity Button
   m_TagString: Untagged
@@ -935,6 +1074,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 813459540}
   m_CullTransparentMesh: 1
+--- !u!114 &813459545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 813459540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1149198261}
+          m_TargetAssemblyTypeName: BuyMenu, Assembly-CSharp
+          m_MethodName: SetContext
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: infectivity
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1149198261}
+          m_TargetAssemblyTypeName: BuyMenu, Assembly-CSharp
+          m_MethodName: ClearContext
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &954306505
 GameObject:
   m_ObjectHideFlags: 0
@@ -1214,10 +1398,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccdb40f5f62ba9446a70152466bb208d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  points: {fileID: 0}
-  context: {fileID: 0}
-  infected: {fileID: 0}
-  deaths: {fileID: 0}
+  points: {fileID: 161292655}
+  context: {fileID: 266673731}
+  infected: {fileID: 2029930344}
 --- !u!1 &1339428976
 GameObject:
   m_ObjectHideFlags: 0
@@ -1551,6 +1734,7 @@ GameObject:
   - component: {fileID: 2029930343}
   - component: {fileID: 2029930345}
   - component: {fileID: 2029930344}
+  - component: {fileID: 2029930346}
   m_Layer: 5
   m_Name: Infected Text
   m_TagString: Untagged
@@ -1574,8 +1758,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 50.003, y: 200}
-  m_SizeDelta: {x: 772.57, y: 102.445}
+  m_AnchoredPosition: {x: 50.003, y: 157.851}
+  m_SizeDelta: {x: 772.57, y: 144.594}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &2029930344
 MonoBehaviour:
@@ -1603,7 +1787,7 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 30
+    m_MaxSize: 35
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -1621,6 +1805,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2029930342}
   m_CullTransparentMesh: 1
+--- !u!114 &2029930346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2029930342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1149198261}
+          m_TargetAssemblyTypeName: BuyMenu, Assembly-CSharp
+          m_MethodName: SetContext
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: infected points
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1149198261}
+          m_TargetAssemblyTypeName: BuyMenu, Assembly-CSharp
+          m_MethodName: ClearContext
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &2037510840
 GameObject:
   m_ObjectHideFlags: 0
@@ -1633,6 +1862,7 @@ GameObject:
   - component: {fileID: 2037510844}
   - component: {fileID: 2037510843}
   - component: {fileID: 2037510842}
+  - component: {fileID: 2037510845}
   m_Layer: 5
   m_Name: Lethality Button
   m_TagString: Untagged
@@ -1754,6 +1984,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2037510840}
   m_CullTransparentMesh: 1
+--- !u!114 &2037510845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2037510840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1149198261}
+          m_TargetAssemblyTypeName: BuyMenu, Assembly-CSharp
+          m_MethodName: SetContext
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: lethality
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1149198261}
+          m_TargetAssemblyTypeName: BuyMenu, Assembly-CSharp
+          m_MethodName: ClearContext
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &2105096467
 GameObject:
   m_ObjectHideFlags: 0
@@ -1766,6 +2041,7 @@ GameObject:
   - component: {fileID: 2105096471}
   - component: {fileID: 2105096470}
   - component: {fileID: 2105096469}
+  - component: {fileID: 2105096472}
   m_Layer: 5
   m_Name: Resilience Button
   m_TagString: Untagged
@@ -1887,6 +2163,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2105096467}
   m_CullTransparentMesh: 1
+--- !u!114 &2105096472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2105096467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1149198261}
+          m_TargetAssemblyTypeName: BuyMenu, Assembly-CSharp
+          m_MethodName: SetContext
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: resilience
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1149198261}
+          m_TargetAssemblyTypeName: BuyMenu, Assembly-CSharp
+          m_MethodName: ClearContext
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1001 &325518771023273957
 PrefabInstance:
   m_ObjectHideFlags: 0
