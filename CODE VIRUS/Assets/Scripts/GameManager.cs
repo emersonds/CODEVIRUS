@@ -90,6 +90,8 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         AddMutationPoints("Passive");
+        if (Input.GetKeyDown(KeyCode.Escape))
+            Application.Quit();
     }
 
     public void AddMutationPoints(string source)
