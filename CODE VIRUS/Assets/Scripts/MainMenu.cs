@@ -19,7 +19,7 @@ public class MainMenu : MonoBehaviour
     void Start()
     {
         GoToMainMenu();
-
+        AudioManager.AM.Play("Main Theme");
     }
 
     public void GoToMenu(string menu)

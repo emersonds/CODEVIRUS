@@ -85,12 +85,18 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        virus = GameObject.Find("Virus").GetComponent<Virus>();
+        //virus = GameObject.Find("Virus").GetComponent<Virus>();       // Instantiating GameManager from main menu makes this throw an error
     }
 
     // Update is called once per frame
     private void Update()
     {
+        if(virus == null &&
+            SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Clicker"))
+        {
+            virus = GameObject.Find("Virus").GetComponent<Virus>();
+        }
+
         AddMutationPoints("Passive");
         if (Input.GetKeyDown(KeyCode.Escape))
         {
