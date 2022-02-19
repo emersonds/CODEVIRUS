@@ -60,12 +60,4 @@ public class BuyMenu : MonoBehaviour
     {
         context.text = "";
     }
-
-    public void ShowInstructions(bool show)
-    {
-        if (show)
-            instructions.SetActive(true);
-        else
-            instructions.SetActive(false);
-    }
 }

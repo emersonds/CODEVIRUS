@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Controls points and multipliers, as well as handles multi-scene processes.
@@ -9,9 +10,9 @@ public class GameManager : MonoBehaviour
 {
     // Points
     [SerializeField]
-    private int defaultClickValue = 1;
+    private float defaultClickValue = 1;
     [SerializeField]
-    private int mutationPoints = 0;
+    private float mutationPoints = 0;
     [SerializeField]
     private int mutationPointsPerMin = 0;
     [SerializeField]
@@ -29,7 +30,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private float deathMultiplier = 0;
 
-    public int MutationPoints { get { return mutationPoints; } }
+    public float MutationPoints { get { return mutationPoints; } }
     public int InfectedPoints { get { return infectedPoints; } }
     public int DeathPoints { get { return deathPoints; } }
 
@@ -42,19 +43,20 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private int resilienceCost = 5;     // Base upgrade cost
     [SerializeField]
-    private int clickerCost = 5;        // Base upgrade cost
+    private float clickerCost = 5;        // Base upgrade cost
     [SerializeField]
     private int incomeCost = 5;         // Base upgrade cost
 
     public int InfectCost { get { return infectCost; } }
     public int LethalCost { get { return lethalCost; } }
     public int ResilienceCost { get { return resilienceCost; } }
-    public int ClickerCost { get { return clickerCost; } }
+    public float ClickerCost { get { return clickerCost; } }
     public int IncomeCost { get { return incomeCost; } }
 
     private int infectCounter = 0;      // Used for showing mushrooms
     private int lethalCounter = 0;      // Used for showing spikes
     private int resilienceCounter = 0;  // Used for showing donuts
+    private int clickerCounter = 0;     // Used for clicker upgrades
 
     // Reference to virus
     private Virus virus;
@@ -91,7 +93,12 @@ public class GameManager : MonoBehaviour
     {
         AddMutationPoints("Passive");
         if (Input.GetKeyDown(KeyCode.Escape))
-            Application.Quit();
+        {
+            if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("MainMenu"))
+                Application.Quit();
+            else
+                SceneManager.LoadScene("MainMenu");
+        }
     }
 
     public void AddMutationPoints(string source)
@@ -99,7 +106,7 @@ public class GameManager : MonoBehaviour
         switch (source)
         {
             case ("Click"):
-                mutationPoints += defaultClickValue;
+                mutationPoints += (int)defaultClickValue;
                 break;
 
             case ("Passive"):
@@ -153,7 +160,9 @@ public class GameManager : MonoBehaviour
                 if (mutationPoints - clickerCost >= 0)
                 {
                     mutationPoints -= clickerCost;
-                    clickerCost *= 2;
+                    clickerCounter++;
+                    clickerCost = Mathf.Ceil(5 * Mathf.Pow(4, clickerCounter));
+                    Debug.Log(clickerCost);
                     defaultClickValue *= 2;
                 }
                 break;
