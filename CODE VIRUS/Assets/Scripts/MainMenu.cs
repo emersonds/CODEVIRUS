@@ -94,7 +94,7 @@ public class MainMenu : MonoBehaviour
             case ("music"):
                 value = Mathf.Round((musicVolumeSlider.value / musicVolumeSlider.maxValue) * 100f);
                 musicVolumeValue.text = value.ToString() + "%";
-                AudioManager.AM.ChangeVolume("Main Theme", musicVolumeSlider.value);
+                AudioManager.AM.ChangeVolume("Music", musicVolumeSlider.value);
                 break;
         }
     }

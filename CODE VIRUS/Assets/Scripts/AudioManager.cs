@@ -105,14 +105,24 @@ public class AudioManager : MonoBehaviour
     /// <param name="name"></param>
     /// <param name="val"></param>
     /// <returns></returns>
-    public void ChangeVolume(string name, float val)
+    public void ChangeVolume(string category, float val)
     {
-        Sound s = Array.Find(sounds, sound => sound.name == name);          // searches for the sound in the array
-        if (s == null)                                                      // prevents exceptions being thrown if unable to locate a sound
+        for (int i = 0; i < sounds.Length; i++)
         {
-            Debug.LogWarning("Sound: " + name + " not found!");             // prints a warning to console with which sound cannot be found
-            return;
+            if (sounds[i].category == category)
+            {
+                sounds[i].source.volume = val;
+            }
         }
-        s.source.volume = val;                                                    // Changes the sound's volume
+
+        // Old volume changer that changed individual sounds rather than groups of sounds
+
+        //Sound s = Array.Find(sounds, sound => sound.name == name);          // searches for the sound in the array
+        //if (s == null)                                                      // prevents exceptions being thrown if unable to locate a sound
+        //{
+        //    Debug.LogWarning("Sound: " + name + " not found!");             // prints a warning to console with which sound cannot be found
+        //    return;
+        //}
+        //s.source.volume = val;                                              // Changes the sound's volume
     }
 }

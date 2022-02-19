@@ -58,4 +58,9 @@ public class BuyMenu : MonoBehaviour
     {
         context.text = "";
     }
+
+    public void UpgradeVirus(string upgrade)
+    {
+        GameManager.GM.UpgradeVirus(upgrade);
+    }
 }
