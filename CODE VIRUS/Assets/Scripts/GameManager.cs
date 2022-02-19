@@ -95,6 +95,7 @@ public class GameManager : MonoBehaviour
             SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Clicker"))
         {
             virus = GameObject.Find("Virus").GetComponent<Virus>();
+            Debug.Log("Virus Assigned");
         }
 
         AddMutationPoints("Passive");

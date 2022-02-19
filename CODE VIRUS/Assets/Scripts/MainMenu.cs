@@ -14,12 +14,22 @@ public class MainMenu : MonoBehaviour
     [SerializeField]
     GameObject instructionsPanel;
 
+    // Options Menu
+    [SerializeField]
+    private Slider musicVolumeSlider;
+    [SerializeField]
+    private Text musicVolumeValue;
+
+    private string currentScene;
 
     // Start is called before the first frame update
     void Start()
     {
         GoToMainMenu();
-        AudioManager.AM.Play("Main Theme");
+        if (!AudioManager.AM.PlayingSound("Main Theme"))
+            AudioManager.AM.Play("Main Theme");
+
+        musicVolumeSlider.onValueChanged.AddListener(delegate { ValueChangeCheck("music"); });
     }
 
     public void GoToMenu(string menu)
@@ -53,12 +63,14 @@ public class MainMenu : MonoBehaviour
         mainMenuPanel.SetActive(false);
         instructionsPanel.SetActive(false);
         optionsPanel.SetActive(true);
+        currentScene = "Options";
     }
 
     void GoToInstructions()
     {
         optionsPanel.SetActive(false);
         instructionsPanel.SetActive(true);
+        currentScene = "Instructions";
     }
 
     void GoToMainMenu()
@@ -66,5 +78,24 @@ public class MainMenu : MonoBehaviour
         optionsPanel.SetActive(false);
         instructionsPanel.SetActive(false);
         mainMenuPanel.SetActive(true);
+        currentScene = "Main Menu";
+    }
+
+    void ValueChangeCheck(string slider)
+    {
+        float value = 0f;   // Used to display the slider value
+
+        switch(slider)
+        {
+            // If method was called in an unintended way
+            default:
+                break;
+
+            case ("music"):
+                value = Mathf.Round((musicVolumeSlider.value / musicVolumeSlider.maxValue) * 100f);
+                musicVolumeValue.text = value.ToString() + "%";
+                AudioManager.AM.ChangeVolume("Main Theme", musicVolumeSlider.value);
+                break;
+        }
     }
 }

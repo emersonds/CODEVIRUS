@@ -98,4 +98,21 @@ public class AudioManager : MonoBehaviour
             return false;
         }
     }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="name"></param>
+    /// <param name="val"></param>
+    /// <returns></returns>
+    public void ChangeVolume(string name, float val)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == name);          // searches for the sound in the array
+        if (s == null)                                                      // prevents exceptions being thrown if unable to locate a sound
+        {
+            Debug.LogWarning("Sound: " + name + " not found!");             // prints a warning to console with which sound cannot be found
+            return;
+        }
+        s.source.volume = val;                                                    // Changes the sound's volume
+    }
 }
