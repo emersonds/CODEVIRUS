@@ -530,6 +530,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7623312223202969778, guid: 106fec01b07e3294fb7e16e81005ba73, type: 3}
+      propertyPath: m_Interactable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7623312224142261714, guid: 106fec01b07e3294fb7e16e81005ba73, type: 3}
       propertyPath: m_Name
       value: BuyMenu Canvas

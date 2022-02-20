@@ -140,46 +140,51 @@ public class GameManager : MonoBehaviour
             case ("infect"):
                 if (infectCounter < 9 && (mutationPoints - infectCost >= 0))
                 {
-                    // Upgrade stuff
+                    // Cost
                     mutationPoints -= infectCost;
-                    infectCost *= 2;
-
-                    // Show part
-                    virus.ShowUpgrade(virus.Mushrooms, infectCounter);
                     infectCounter++;
+                    infectCost = Mathf.Ceil(baseInfectCost * Mathf.Pow(4, infectCounter));
+
+                    // Upgrade
+                    virus.ShowUpgrade(virus.Mushrooms, infectCounter - 1);
+                    
                 }
                 break;
             case ("lethal"):
                 if (lethalCounter < 9 && (mutationPoints - lethalCost >= 0))
                 {
-                    // Upgrade stuff
+                    // Cost
                     mutationPoints -= lethalCost;
-                    lethalCost *= 2;
-
-                    // Show part
-                    virus.ShowUpgrade(virus.Spikes, lethalCounter);
                     lethalCounter++;
+                    lethalCost = Mathf.Ceil(baseLethalCost * Mathf.Pow(4, lethalCounter));
+
+                    // Upgrade
+                    virus.ShowUpgrade(virus.Spikes, lethalCounter - 1);
+                    
                 }
                 break;
             case ("resilience"):
                 if (resilienceCounter < 9 && (mutationPoints - resilienceCost >= 0))
                 {
-                    // Upgrade stuff
+                    // Cost
                     mutationPoints -= resilienceCost;
-                    resilienceCost *= 2;
-
-                    // Show part
-                    virus.ShowUpgrade(virus.Donuts, resilienceCounter);
                     resilienceCounter++;
+                    resilienceCost = Mathf.Ceil(baseResilienceCost * Mathf.Pow(4, resilienceCounter));
+
+                    // Upgrade
+                    virus.ShowUpgrade(virus.Donuts, resilienceCounter - 1);
+
                 }
                 break;
             case ("clicker"):
-                // Upgrade stuff
                 if (mutationPoints - clickerCost >= 0)
                 {
+                    // Cost
                     mutationPoints -= clickerCost;
                     clickerCounter++;
                     clickerCost = Mathf.Ceil(baseClickerCost * Mathf.Pow(4, clickerCounter));
+
+                    // Upgrade
                     defaultClickValue *= 2;
                 }
                 break;
