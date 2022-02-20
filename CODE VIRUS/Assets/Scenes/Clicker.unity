@@ -416,6 +416,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4446761836655290207, guid: b89d37ae27fcc1b4bbf370dff183b49a, type: 3}
+      propertyPath: deathMultiplier
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4446761836655290207, guid: b89d37ae27fcc1b4bbf370dff183b49a, type: 3}
+      propertyPath: mutationPointsMultiplier
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7136678681574361953, guid: b89d37ae27fcc1b4bbf370dff183b49a, type: 3}
       propertyPath: m_Name
       value: GameManager

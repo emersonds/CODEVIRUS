@@ -28,11 +28,20 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private float deathsPerMin = 0;
     [SerializeField]
-    private float deathMultiplier = 0;
+    private float deathMultiplier = 1;
 
+    // Public references to private data
     public float MutationPoints { get { return mutationPoints; } }
     public float InfectedPoints { get { return infectedPoints; } }
     public float DeathPoints { get { return deathPoints; } }
+
+    // Base production rate of income-based upgrades
+    [SerializeField]
+    private float baseMutationPointsRate = 3.59f;
+    [SerializeField]
+    private float baseInfectedRate = 3.8f;
+    [SerializeField]
+    private float baseDeathRate = 2.7f;
 
 
     // Base cost of upgrades
@@ -55,12 +64,12 @@ public class GameManager : MonoBehaviour
     public float IncomeCost { get { return incomeCost; } }
 
     // How many of an upgrade the players owns
-    private int infectCounter = 0;    
-    private int lethalCounter = 0;   
-    private int resilienceCounter = 0; 
-    private int clickerCounter = 0;     
-    private int incomeCounter = 0;   
-    
+    private int infectCounter = 0;
+    private int lethalCounter = 0;
+    private int resilienceCounter = 0;
+    private int clickerCounter = 0;
+    private int incomeCounter = 0;
+
     // How much an upgrade costs
     private float infectCost;
     private float lethalCost;
@@ -73,6 +82,11 @@ public class GameManager : MonoBehaviour
 
     // Reference to self
     public static GameManager GM;
+
+    // Timer checks
+    private bool pointsGeneratorRunning = false;
+    private bool infectedGeneratorRunning = false;
+    private bool deathGeneratorRunning = false;
 
     private void Awake()
     {
@@ -97,12 +111,16 @@ public class GameManager : MonoBehaviour
     {
         //virus = GameObject.Find("Virus").GetComponent<Virus>();       // Instantiating GameManager from main menu makes this throw an error
         clickerCost = baseClickerCost;
+        infectCost = baseInfectCost;
+        lethalCost = baseLethalCost;
+        resilienceCost = baseResilienceCost;
+        incomeCost = baseIncomeCost;
     }
 
     // Update is called once per frame
     private void Update()
     {
-        if(virus == null &&
+        if (virus == null &&
             SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Clicker"))
         {
             virus = GameObject.Find("Virus").GetComponent<Virus>();
@@ -140,6 +158,10 @@ public class GameManager : MonoBehaviour
             case ("infect"):
                 if (infectCounter < 9 && (mutationPoints - infectCost >= 0))
                 {
+                    // Check if timer running
+                    if (!infectedGeneratorRunning)
+                        StartCoroutine(GenerateInfected());
+
                     // Cost
                     mutationPoints -= infectCost;
                     infectCounter++;
@@ -147,12 +169,16 @@ public class GameManager : MonoBehaviour
 
                     // Upgrade
                     virus.ShowUpgrade(virus.Mushrooms, infectCounter - 1);
-                    
+                    infectedPerMin = Mathf.Ceil((baseInfectedRate * infectCounter) * infectedMultiplier);
                 }
                 break;
             case ("lethal"):
                 if (lethalCounter < 9 && (mutationPoints - lethalCost >= 0))
                 {
+                    // Check if timer running
+                    if (!deathGeneratorRunning)
+                        StartCoroutine(GenerateDeath());
+
                     // Cost
                     mutationPoints -= lethalCost;
                     lethalCounter++;
@@ -160,7 +186,7 @@ public class GameManager : MonoBehaviour
 
                     // Upgrade
                     virus.ShowUpgrade(virus.Spikes, lethalCounter - 1);
-                    
+                    deathsPerMin = Mathf.Ceil((baseDeathRate * lethalCounter) * deathMultiplier);
                 }
                 break;
             case ("resilience"):
@@ -189,9 +215,69 @@ public class GameManager : MonoBehaviour
                 }
                 break;
             case ("income"):
-                // Upgrade stuff
-                
+                if (mutationPoints - incomeCost >= 0)
+                {
+                    // Check if timer running
+                    if (!pointsGeneratorRunning)
+                        StartCoroutine(GenerateMP());
+
+                    // Cost
+                    mutationPoints -= incomeCost;
+                    incomeCounter++;
+                    incomeCost = Mathf.Ceil(baseIncomeCost * Mathf.Pow(4, incomeCounter));
+
+                    // Upgrade
+                    mutationPointsPerMin = Mathf.Ceil((baseMutationPointsRate * incomeCounter) * mutationPointsMultiplier);
+                }
                 break;
+        }
+    }
+
+    /// <summary>
+    /// Generates mutation points
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator GenerateMP()
+    {
+        pointsGeneratorRunning = true;
+        for (; ; )
+        {
+            mutationPoints += mutationPointsPerMin;
+            yield return new WaitForSeconds(1f);
+        }
+    }
+
+    /// <summary>
+    /// Generates infected points/people
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator GenerateInfected()
+    {
+        infectedGeneratorRunning = true;
+        for (; ; )
+        {
+            infectedPoints += infectedPerMin;
+            yield return new WaitForSeconds(1f);
+        }
+    }
+
+    /// <summary>
+    /// Generates DEATH.
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator GenerateDeath()
+    {
+        deathGeneratorRunning = true;
+        for (; ; )
+        {
+            if (infectedPoints - deathsPerMin >= 0)
+            {
+                Debug.Log("Deaths have occurred.\nDeaths Per Min: " + deathsPerMin +
+                    "\nInfected Points: " + infectedPoints + "\nDeath Points: " + deathPoints);
+                infectedPoints -= deathsPerMin;
+                deathPoints += deathsPerMin;
+            }
+            yield return new WaitForSeconds(1f);
         }
     }
 }
