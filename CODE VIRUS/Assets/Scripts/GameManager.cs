@@ -14,49 +14,59 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private float mutationPoints = 0;
     [SerializeField]
-    private int mutationPointsPerMin = 0;
+    private float mutationPointsPerMin = 0;
     [SerializeField]
     private float mutationPointsMultiplier = 1;
     [SerializeField]
-    private int infectedPoints = 0;
+    private float infectedPoints = 0;
     [SerializeField]
-    private int infectedPerMin = 0;
+    private float infectedPerMin = 0;
     [SerializeField]
     private float infectedMultiplier = 1;
     [SerializeField]
-    private int deathPoints = 0;
+    private float deathPoints = 0;
     [SerializeField]
-    private int deathsPerMin = 0;
+    private float deathsPerMin = 0;
     [SerializeField]
     private float deathMultiplier = 0;
 
     public float MutationPoints { get { return mutationPoints; } }
-    public int InfectedPoints { get { return infectedPoints; } }
-    public int DeathPoints { get { return deathPoints; } }
+    public float InfectedPoints { get { return infectedPoints; } }
+    public float DeathPoints { get { return deathPoints; } }
 
 
-    // Upgrade variables
+    // Base cost of upgrades
     [SerializeField]
-    private int infectCost = 5;         // Base upgrade cost
+    private float baseInfectCost = 5;         // Base upgrade cost
     [SerializeField]
-    private int lethalCost = 5;         // Base upgrade cost
+    private float baseLethalCost = 5;         // Base upgrade cost
     [SerializeField]
-    private int resilienceCost = 5;     // Base upgrade cost
+    private float baseResilienceCost = 5;     // Base upgrade cost
     [SerializeField]
-    private float clickerCost = 5;        // Base upgrade cost
+    private float baseClickerCost = 5;        // Base upgrade cost
     [SerializeField]
-    private int incomeCost = 5;         // Base upgrade cost
+    private float baseIncomeCost = 5;         // Base upgrade cost
 
-    public int InfectCost { get { return infectCost; } }
-    public int LethalCost { get { return lethalCost; } }
-    public int ResilienceCost { get { return resilienceCost; } }
+    // Public references to private data
+    public float InfectCost { get { return infectCost; } }
+    public float LethalCost { get { return lethalCost; } }
+    public float ResilienceCost { get { return resilienceCost; } }
     public float ClickerCost { get { return clickerCost; } }
-    public int IncomeCost { get { return incomeCost; } }
+    public float IncomeCost { get { return incomeCost; } }
 
-    private int infectCounter = 0;      // Used for showing mushrooms
-    private int lethalCounter = 0;      // Used for showing spikes
-    private int resilienceCounter = 0;  // Used for showing donuts
-    private int clickerCounter = 0;     // Used for clicker upgrades
+    // How many of an upgrade the players owns
+    private int infectCounter = 0;    
+    private int lethalCounter = 0;   
+    private int resilienceCounter = 0; 
+    private int clickerCounter = 0;     
+    private int incomeCounter = 0;   
+    
+    // How much an upgrade costs
+    private float infectCost;
+    private float lethalCost;
+    private float resilienceCost;
+    private float clickerCost;
+    private float incomeCost;
 
     // Reference to virus
     private Virus virus;
@@ -86,6 +96,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         //virus = GameObject.Find("Virus").GetComponent<Virus>();       // Instantiating GameManager from main menu makes this throw an error
+        clickerCost = baseClickerCost;
     }
 
     // Update is called once per frame
@@ -168,14 +179,13 @@ public class GameManager : MonoBehaviour
                 {
                     mutationPoints -= clickerCost;
                     clickerCounter++;
-                    clickerCost = Mathf.Ceil(5 * Mathf.Pow(4, clickerCounter));
-                    Debug.Log(clickerCost);
+                    clickerCost = Mathf.Ceil(baseClickerCost * Mathf.Pow(4, clickerCounter));
                     defaultClickValue *= 2;
                 }
                 break;
             case ("income"):
                 // Upgrade stuff
-                // PASSIVE INCOME NOT YET IMPLEMENTED SO DONT WORRY ABOUT THIS
+                
                 break;
         }
     }
