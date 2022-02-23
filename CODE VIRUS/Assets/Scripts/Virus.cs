@@ -60,6 +60,7 @@ public class Virus : MonoBehaviour
                 {
                     // Points stuff here ...
                     GameManager.GM.AddMutationPoints("Click");
+                    AudioManager.AM.Play("Virus Click");
                     Debug.Log("Player clicked virus.");
                 }
             }
@@ -86,6 +87,9 @@ public class Virus : MonoBehaviour
     {
         // Checks if array is null before setting active the part at the index
         if (arr != null)
+        {
             arr[counter].SetActive(true);
+            AudioManager.AM.Play("Virus Upgrade");
+        }
     }
 }

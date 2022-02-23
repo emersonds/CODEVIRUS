@@ -125,4 +125,20 @@ public class AudioManager : MonoBehaviour
         //}
         //s.source.volume = val;                                              // Changes the sound's volume
     }
+
+    ///// <summary>
+    ///// Called when a button is clicked
+    ///// </summary>
+    //public void ButtonClick()
+    //{
+    //    Play("Button Click");
+    //}
+
+    ///// <summary>
+    ///// Called when the mouse enters a button
+    ///// </summary>
+    //public void ButtonHover()
+    //{
+    //    Play("Button Hover");
+    //}
 }

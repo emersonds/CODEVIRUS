@@ -28,7 +28,7 @@ public class BuyMenu : MonoBehaviour
 
     public void SetContext(string menuItem)
     {
-        switch(menuItem)
+        switch (menuItem)
         {
             case ("points"):
                 context.text = "The points you currently have.\nThese points can be used to purchase upgrades.";
@@ -62,5 +62,15 @@ public class BuyMenu : MonoBehaviour
     public void UpgradeVirus(string upgrade)
     {
         GameManager.GM.UpgradeVirus(upgrade);
+    }
+
+    public void ButtonHover()
+    {
+        AudioManager.AM.Play("Button Hover");
+    }
+
+    public void ButtonClick()
+    {
+        AudioManager.AM.Play("Button Click");
     }
 }
