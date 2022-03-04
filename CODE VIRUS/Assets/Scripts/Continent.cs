@@ -9,11 +9,11 @@ public class Continent : MonoBehaviour
     [SerializeField]
     public bool isInfected = false;
     [SerializeField]
-    public int totalPopulation;
+    public float totalPopulation;
     [SerializeField]
-    public int infectedCount;
+    public float infectedCount;
     [SerializeField]
-    public int deathCount;
+    public float deathCount;
     [SerializeField]
     public string biome;
     [SerializeField]
@@ -21,9 +21,6 @@ public class Continent : MonoBehaviour
 
     private void Start()
     {
-        if (neighbors.Length > 0 && neighbors[0] != null)
-            Debug.Log(neighbors[0].continent.continentName);
-        else
-            Debug.Log("No neighbor!!");
+
     }
 }

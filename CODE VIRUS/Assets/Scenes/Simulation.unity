@@ -824,6 +824,8 @@ GameObject:
   - component: {fileID: 6564005310489434460}
   - component: {fileID: 768493258803881393}
   - component: {fileID: 488299888565623315}
+  - component: {fileID: 488299888565623314}
+  - component: {fileID: 488299888565623316}
   m_Layer: 0
   m_Name: South America
   m_TagString: Untagged
@@ -831,6 +833,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!54 &488299888565623314
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 488299888565623313}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!114 &488299888565623315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -843,14 +861,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f0438d4a3c2c14faad4173ca1a0b38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  continentName: 
+  continentName: South America
   isInfected: 0
-  totalPopulation: 0
+  totalPopulation: 422500000
   infectedCount: 0
   deathCount: 0
   biome: 
-  Test: 0
   neighbors: []
+--- !u!64 &488299888565623316
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 488299888565623313}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -462981019419857548, guid: edbada7838365464c81bde7d95a779d0, type: 3}
 --- !u!4 &579493831267504091
 Transform:
   m_ObjectHideFlags: 0
@@ -927,6 +958,8 @@ GameObject:
   - component: {fileID: 5260629648036159173}
   - component: {fileID: 1779966713377120808}
   - component: {fileID: 1503992194737134985}
+  - component: {fileID: 1503992194737134986}
+  - component: {fileID: 1503992194737134987}
   m_Layer: 0
   m_Name: Africa
   m_TagString: Untagged
@@ -946,14 +979,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f0438d4a3c2c14faad4173ca1a0b38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  continentName: 
+  continentName: Africa
   isInfected: 0
-  totalPopulation: 0
+  totalPopulation: 1.216e+9
   infectedCount: 0
   deathCount: 0
   biome: 
-  Test: 0
   neighbors: []
+--- !u!54 &1503992194737134986
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1503992194737134984}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!64 &1503992194737134987
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1503992194737134984}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -462981019419857548, guid: 7f6ef384bc5b0d1428234b9247386c72, type: 3}
 --- !u!23 &1779966713377120808
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1029,13 +1091,26 @@ GameObject:
   - component: {fileID: 5100102979906539848}
   - component: {fileID: 3805843695819868528}
   - component: {fileID: 5188601377724287691}
-  m_Layer: 2
+  - component: {fileID: 3218480093929690844}
+  m_Layer: 0
   m_Name: Earth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &3218480093929690844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3218480093929690843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9067d1250fd94d43aad1a9e42c1937a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!33 &3805843695819868528
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1120,6 +1195,8 @@ GameObject:
   - component: {fileID: 1937148147444142976}
   - component: {fileID: 5426861170910785389}
   - component: {fileID: 5133228218989924558}
+  - component: {fileID: 5133228218989924559}
+  - component: {fileID: 5133228218989924560}
   m_Layer: 0
   m_Name: Australia
   m_TagString: Untagged
@@ -1139,14 +1216,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f0438d4a3c2c14faad4173ca1a0b38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  continentName: 
+  continentName: Australia
   isInfected: 0
-  totalPopulation: 0
+  totalPopulation: 25690000
   infectedCount: 0
   deathCount: 0
   biome: 
-  Test: 0
   neighbors: []
+--- !u!54 &5133228218989924559
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5133228218989924557}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!64 &5133228218989924560
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5133228218989924557}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -462981019419857548, guid: c48450936faaff04abc46ca1c644734a, type: 3}
 --- !u!23 &5188601377724287691
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1265,6 +1371,8 @@ GameObject:
   - component: {fileID: 1138191344469964248}
   - component: {fileID: 6807646576308635957}
   - component: {fileID: 5914748977305056918}
+  - component: {fileID: 5914748977305056919}
+  - component: {fileID: 5914748977305056920}
   m_Layer: 0
   m_Name: Asia
   m_TagString: Untagged
@@ -1284,14 +1392,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f0438d4a3c2c14faad4173ca1a0b38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  continentName: 
+  continentName: Asia
   isInfected: 0
-  totalPopulation: 0
+  totalPopulation: 4.561e+9
   infectedCount: 0
   deathCount: 0
   biome: 
-  Test: 0
   neighbors: []
+--- !u!54 &5914748977305056919
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5914748977305056917}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!64 &5914748977305056920
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5914748977305056917}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -462981019419857548, guid: 25cc19d701ed5ff44ad0a073424e0fab, type: 3}
 --- !u!33 &6564005310489434460
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1368,6 +1505,8 @@ GameObject:
   - component: {fileID: 4107673856418425912}
   - component: {fileID: 7544469572577071317}
   - component: {fileID: 7268706168844562294}
+  - component: {fileID: 7268706168844562295}
+  - component: {fileID: 7268706168844562296}
   m_Layer: 0
   m_Name: Europe
   m_TagString: Untagged
@@ -1387,14 +1526,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f0438d4a3c2c14faad4173ca1a0b38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  continentName: 
+  continentName: Europe
   isInfected: 0
-  totalPopulation: 0
+  totalPopulation: 746400000
   infectedCount: 0
   deathCount: 0
   biome: 
-  Test: 0
   neighbors: []
+--- !u!54 &7268706168844562295
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7268706168844562293}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!64 &7268706168844562296
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7268706168844562293}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -462981019419857548, guid: 22a3502475b678c48bcd45dfbae2a375, type: 3}
 --- !u!1 &7437272381185150832
 GameObject:
   m_ObjectHideFlags: 0
@@ -1407,6 +1575,8 @@ GameObject:
   - component: {fileID: 4244851520304860221}
   - component: {fileID: 7735646453162701008}
   - component: {fileID: 7437272381185150833}
+  - component: {fileID: 7437272381185150834}
+  - component: {fileID: 7437272381185150835}
   m_Layer: 0
   m_Name: North America
   m_TagString: Untagged
@@ -1426,13 +1596,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f0438d4a3c2c14faad4173ca1a0b38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  continentName: 
+  continentName: North America
   isInfected: 0
-  totalPopulation: 580000000
+  totalPopulation: 579000000
   infectedCount: 0
   deathCount: 0
   biome: mild
-  Test: 0
   neighbors:
   - name: South America
     continent: {fileID: 488299888565623315}
@@ -1454,6 +1623,36 @@ MonoBehaviour:
     continent: {fileID: 5914748977305056918}
     distance: 1200
     distanceType: ocean
+--- !u!54 &7437272381185150834
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7437272381185150832}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!64 &7437272381185150835
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7437272381185150832}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -462981019419857548, guid: 1afa1e3a2014af449b2ae366a62d2634, type: 3}
 --- !u!23 &7544469572577071317
 MeshRenderer:
   m_ObjectHideFlags: 0

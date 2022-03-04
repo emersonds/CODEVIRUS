@@ -234,6 +234,29 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
+    /// Determines how a number should be printed.
+    /// This should display 1-999999, 1M, 1B, 1T, etc.
+    /// </summary>
+    /// <param name="points"></param>
+    /// <returns></returns>
+    public string GetSuffix(float num)
+    {
+        string value = "";
+
+        // Check which suffix to use
+        if (num <= 999999)
+            value = num.ToString();
+        else if (num > 999999 && num <= 999999999)
+            value = (num / 1000000f).ToString("0.##") + "M";
+        else if (num > 999999999 && num <= 999999999999)
+            value = (num / 1000000000f).ToString("0.##") + "B";
+        else if (num > 999999999999)
+            value = (num / 1000000000000f).ToString("0.##") + "T";
+
+        return value;
+    }
+
+    /// <summary>
     /// Generates mutation points
     /// </summary>
     /// <returns></returns>
