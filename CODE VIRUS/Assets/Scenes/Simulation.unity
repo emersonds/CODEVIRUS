@@ -867,7 +867,19 @@ MonoBehaviour:
   infectedCount: 0
   deathCount: 0
   biome: 
-  neighbors: []
+  neighbors:
+  - name: North America
+    continent: {fileID: 7437272381185150833}
+    distance: 500
+    distanceType: landbridge
+  - name: Europe
+    continent: {fileID: 7268706168844562294}
+    distance: 1200
+    distanceType: ocean
+  - name: Africa
+    continent: {fileID: 1503992194737134985}
+    distance: 1000
+    distanceType: ocean
 --- !u!64 &488299888565623316
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -985,7 +997,27 @@ MonoBehaviour:
   infectedCount: 0
   deathCount: 0
   biome: 
-  neighbors: []
+  neighbors:
+  - name: Asia
+    continent: {fileID: 5914748977305056918}
+    distance: 500
+    distanceType: landbridge
+  - name: Europe
+    continent: {fileID: 7268706168844562294}
+    distance: 700
+    distanceType: landbridge
+  - name: North America
+    continent: {fileID: 7437272381185150833}
+    distance: 1500
+    distanceType: ocean
+  - name: South America
+    continent: {fileID: 488299888565623315}
+    distance: 1000
+    distanceType: ocean
+  - name: Australia
+    continent: {fileID: 5133228218989924558}
+    distance: 1200
+    distanceType: ocean
 --- !u!54 &1503992194737134986
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1222,7 +1254,15 @@ MonoBehaviour:
   infectedCount: 0
   deathCount: 0
   biome: 
-  neighbors: []
+  neighbors:
+  - name: Asia
+    continent: {fileID: 5914748977305056918}
+    distance: 700
+    distanceType: ocean
+  - name: Africa
+    continent: {fileID: 1503992194737134985}
+    distance: 1200
+    distanceType: ocean
 --- !u!54 &5133228218989924559
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1398,7 +1438,23 @@ MonoBehaviour:
   infectedCount: 0
   deathCount: 0
   biome: 
-  neighbors: []
+  neighbors:
+  - name: Europe
+    continent: {fileID: 7268706168844562294}
+    distance: 300
+    distanceType: landbridge
+  - name: North America
+    continent: {fileID: 7437272381185150833}
+    distance: 1200
+    distanceType: ocean
+  - name: Africa
+    continent: {fileID: 1503992194737134985}
+    distance: 500
+    distanceType: landbridge
+  - name: Australia
+    continent: {fileID: 5133228218989924558}
+    distance: 700
+    distanceType: ocean
 --- !u!54 &5914748977305056919
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1532,7 +1588,23 @@ MonoBehaviour:
   infectedCount: 0
   deathCount: 0
   biome: 
-  neighbors: []
+  neighbors:
+  - name: Asia
+    continent: {fileID: 5914748977305056918}
+    distance: 300
+    distanceType: landbridge
+  - name: Africa
+    continent: {fileID: 1503992194737134985}
+    distance: 700
+    distanceType: landbridge
+  - name: North America
+    continent: {fileID: 7437272381185150833}
+    distance: 1000
+    distanceType: ocean
+  - name: South America
+    continent: {fileID: 488299888565623315}
+    distance: 1200
+    distanceType: ocean
 --- !u!54 &7268706168844562295
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1613,10 +1685,6 @@ MonoBehaviour:
     distanceType: ocean
   - name: Africa
     continent: {fileID: 1503992194737134985}
-    distance: 2000
-    distanceType: ocean
-  - name: Australia
-    continent: {fileID: 5133228218989924558}
     distance: 1500
     distanceType: ocean
   - name: Asia
