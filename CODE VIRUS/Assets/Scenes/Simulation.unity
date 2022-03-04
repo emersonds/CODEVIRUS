@@ -1437,7 +1437,7 @@ MonoBehaviour:
   totalPopulation: 4.561e+9
   infectedCount: 0
   deathCount: 0
-  biome: mild
+  biome: moderate
   neighbors:
   - name: Europe
     continent: {fileID: 7268706168844562294}
