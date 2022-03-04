@@ -82,4 +82,9 @@ public class BuyMenu : MonoBehaviour
         infected.text = "[ INFECTED: " + infectedToPrint + " ]\n" +
                         "[ KILLS: " + deathsToPrint + " ]";
     }
+
+    public void ChangeScene(string scene)
+    {
+        GameManager.GM.ChangeScenes(scene);
+    }
 }

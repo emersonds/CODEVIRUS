@@ -303,4 +303,9 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(1f);
         }
     }
+
+    public void ChangeScenes(string scene)
+    {
+        SceneManager.LoadScene(scene);
+    }
 }

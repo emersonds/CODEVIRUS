@@ -52,4 +52,9 @@ public class EarthRotater : MonoBehaviour
                 break;
         }
     }
+
+    public void ChangeScene(string scene)
+    {
+        GameManager.GM.ChangeScenes(scene);
+    }
 }
