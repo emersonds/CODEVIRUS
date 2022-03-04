@@ -866,7 +866,7 @@ MonoBehaviour:
   totalPopulation: 422500000
   infectedCount: 0
   deathCount: 0
-  biome: 
+  biome: mild
   neighbors:
   - name: North America
     continent: {fileID: 7437272381185150833}
@@ -996,7 +996,7 @@ MonoBehaviour:
   totalPopulation: 1.216e+9
   infectedCount: 0
   deathCount: 0
-  biome: 
+  biome: moderate
   neighbors:
   - name: Asia
     continent: {fileID: 5914748977305056918}
@@ -1253,7 +1253,7 @@ MonoBehaviour:
   totalPopulation: 25690000
   infectedCount: 0
   deathCount: 0
-  biome: 
+  biome: harsh
   neighbors:
   - name: Asia
     continent: {fileID: 5914748977305056918}
@@ -1437,7 +1437,7 @@ MonoBehaviour:
   totalPopulation: 4.561e+9
   infectedCount: 0
   deathCount: 0
-  biome: 
+  biome: mild
   neighbors:
   - name: Europe
     continent: {fileID: 7268706168844562294}
@@ -1587,7 +1587,7 @@ MonoBehaviour:
   totalPopulation: 746400000
   infectedCount: 0
   deathCount: 0
-  biome: 
+  biome: mild
   neighbors:
   - name: Asia
     continent: {fileID: 5914748977305056918}
@@ -1673,7 +1673,7 @@ MonoBehaviour:
   totalPopulation: 579000000
   infectedCount: 0
   deathCount: 0
-  biome: mild
+  biome: moderate
   neighbors:
   - name: South America
     continent: {fileID: 488299888565623315}
