@@ -1428,16 +1428,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   continentName: 
   isInfected: 0
-  totalPopulation: 0
+  totalPopulation: 580000000
   infectedCount: 0
   deathCount: 0
-  biome: 
+  biome: mild
   Test: 0
   neighbors:
   - name: South America
     continent: {fileID: 488299888565623315}
-    distance: 0
-    distanceType: 
+    distance: 500
+    distanceType: landbridge
+  - name: Europe
+    continent: {fileID: 7268706168844562294}
+    distance: 1000
+    distanceType: ocean
+  - name: Africa
+    continent: {fileID: 1503992194737134985}
+    distance: 2000
+    distanceType: ocean
+  - name: Australia
+    continent: {fileID: 5133228218989924558}
+    distance: 1500
+    distanceType: ocean
+  - name: Asia
+    continent: {fileID: 5914748977305056918}
+    distance: 1200
+    distanceType: ocean
 --- !u!23 &7544469572577071317
 MeshRenderer:
   m_ObjectHideFlags: 0

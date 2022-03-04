@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
 public class Continent : MonoBehaviour
 {
     [SerializeField]
@@ -17,8 +16,6 @@ public class Continent : MonoBehaviour
     public int deathCount;
     [SerializeField]
     public string biome;
-    [SerializeField]
-    public int Test;
     [SerializeField]
     public Neighbor[] neighbors;
 

@@ -21,9 +21,7 @@ public class BuyMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        points.text = "[ MUTATION POINTS: " + GameManager.GM.MutationPoints + " ]";
-        infected.text = "[ INFECTED: " + GameManager.GM.InfectedPoints + " ]\n" +
-                        "[ KILLS: " + GameManager.GM.DeathPoints + " ]";
+        FormatText();
     }
 
     public void SetContext(string menuItem)
@@ -72,5 +70,39 @@ public class BuyMenu : MonoBehaviour
     public void ButtonClick()
     {
         AudioManager.AM.Play("Button Click");
+    }
+
+    void FormatText()
+    {
+        // Format points text
+        string pointsToPrint = GetSuffix(GameManager.GM.MutationPoints);
+        string infectedToPrint = GetSuffix(GameManager.GM.InfectedPoints);
+        string deathsToPrint = GetSuffix(GameManager.GM.DeathPoints);
+        points.text = "[ MUTATION POINTS: " + pointsToPrint + " ]";
+        infected.text = "[ INFECTED: " + infectedToPrint + " ]\n" +
+                        "[ KILLS: " + deathsToPrint + " ]";
+    }
+
+    /// <summary>
+    /// Determines how a number should be printed.
+    /// This should display 1-999999, 1M, 1B, 1T, etc.
+    /// </summary>
+    /// <param name="points"></param>
+    /// <returns></returns>
+    string GetSuffix(float points)
+    {
+        string value = "";
+
+        // Check which suffix to use
+        if (points <= 999999)
+            value = points.ToString();
+        else if (points > 999999 && points <= 999999999)
+            value = (points / 1000000f).ToString("0.##") + "M";
+        else if (points > 999999999 && points <= 999999999999)
+            value = (points / 1000000000f).ToString("0.##") + "B";
+        else if (points > 999999999999)
+            value = (points / 1000000000000f).ToString("0.##") + "T";
+
+        return value;
     }
 }
