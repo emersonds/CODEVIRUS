@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Earth : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject continentDisplayer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -54,6 +57,8 @@ public class Earth : MonoBehaviour
                         Debug.Log(hit.collider.transform.name);
                         break;
                 }
+                continentDisplayer.GetComponent<ContinentDisplayer>().SetContinentDisplay(hit.collider.gameObject);
+                continentDisplayer.GetComponent<ContinentDisplayer>().EnableContinentDisplay(true);
             }
         }
     }
