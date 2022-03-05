@@ -27,11 +27,15 @@ public class Virus : MonoBehaviour
     private Vector3 posOffset = new Vector3();  // Initial position
     private Vector3 tempPos = new Vector3();    // New position
 
+    // Animation stuff
+    private Animator animator;
+
     // Start is called before the first frame update
     private void Start()
     {
         // Store starting position for movement
         posOffset = transform.position;
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -61,6 +65,7 @@ public class Virus : MonoBehaviour
                     // Points stuff here ...
                     GameManager.GM.AddMutationPoints("Click");
                     AudioManager.AM.Play("Virus Click");
+                    animator.Play("Virus_Click", -1, 0f);
                     Debug.Log("Player clicked virus.");
                 }
             }
