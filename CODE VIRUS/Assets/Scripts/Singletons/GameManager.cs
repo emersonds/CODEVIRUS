@@ -247,11 +247,11 @@ public class GameManager : MonoBehaviour
         if (num <= 999999)
             value = num.ToString();
         else if (num > 999999 && num <= 999999999)
-            value = (num / 1000000f).ToString("0.##") + "M";
+            value = (num / 1000000f).ToString("0.##") + " M";
         else if (num > 999999999 && num <= 999999999999)
-            value = (num / 1000000000f).ToString("0.##") + "B";
+            value = (num / 1000000000f).ToString("0.##") + " B";
         else if (num > 999999999999)
-            value = (num / 1000000000000f).ToString("0.##") + "T";
+            value = (num / 1000000000000f).ToString("0.##") + " T";
 
         return value;
     }

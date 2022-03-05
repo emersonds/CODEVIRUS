@@ -33,30 +33,6 @@ public class Earth : MonoBehaviour
             // Checks which continent was clicked if the ray hit a continent
             if (Physics.Raycast(ray, out hit))
             {
-                switch (hit.collider.transform.name)
-                {
-                    case ("Africa"):
-                        Debug.Log("Africa clicked");
-                        break;
-                    case ("Australia"):
-                        Debug.Log("Australia clicked");
-                        break;
-                    case ("Asia"):
-                        Debug.Log("Asia clicked");
-                        break;
-                    case ("Europe"):
-                        Debug.Log("Europe clicked");
-                        break;
-                    case ("North America"):
-                        Debug.Log("North America clicked");
-                        break;
-                    case ("South America"):
-                        Debug.Log("South America clicked");
-                        break;
-                    default:
-                        Debug.Log(hit.collider.transform.name);
-                        break;
-                }
                 continentDisplayer.GetComponent<ContinentDisplayer>().SetContinentDisplay(hit.collider.gameObject);
                 continentDisplayer.GetComponent<ContinentDisplayer>().EnableContinentDisplay(true);
             }
