@@ -125,6 +125,9 @@ public class GameManager : MonoBehaviour
         {
             virus = GameObject.Find("Virus").GetComponent<Virus>();
             Debug.Log("Virus Assigned");
+            MakeUpgradesVisible(virus.Mushrooms, infectCounter);
+            MakeUpgradesVisible(virus.Spikes, lethalCounter);
+            MakeUpgradesVisible(virus.Donuts, resilienceCounter);
         }
 
         AddMutationPoints("Passive");
@@ -307,5 +310,22 @@ public class GameManager : MonoBehaviour
     public void ChangeScenes(string scene)
     {
         SceneManager.LoadScene(scene);
+    }
+
+    /// <summary>
+    /// Temporary method to make sure Virus keeps showing its upgrades on scene changes.
+    /// This is temporary until a save/load feature is implemented.
+    /// </summary>
+    /// <param name="arr">Virus part</param>
+    /// <param name="counter">Array Index: Which part to show.</param>
+    private void MakeUpgradesVisible(GameObject[] arr, int counter)
+    {
+        if (counter > 0)
+        {
+            for (int i = 0; i <= counter; i++)
+            {
+                virus.ShowUpgrade(arr, i);
+            }
+        }
     }
 }
