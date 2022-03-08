@@ -322,7 +322,7 @@ public class GameManager : MonoBehaviour
     {
         if (counter > 0)
         {
-            for (int i = 0; i <= counter; i++)
+            for (int i = 0; i < counter; i++)
             {
                 virus.ShowUpgrade(arr, i);
             }
