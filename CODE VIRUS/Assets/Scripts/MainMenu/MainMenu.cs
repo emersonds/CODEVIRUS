@@ -28,18 +28,24 @@ public class MainMenu : MonoBehaviour
     [SerializeField]
     private Text uiVolumeValue;
 
+    // The current menu being displayed
     private string currentScene;
+
+    // Public reference to current scene
+    public string CurrentScene { get { return currentScene; } }
 
     // Start is called before the first frame update
     void Start()
     {
+        // Displays the main menu
         GoToMainMenu();
+
+        // Plays the main theme if it's not currently playing
         if (!AudioManager.AM.PlayingSound("Main Theme"))
             AudioManager.AM.Play("Main Theme");
 
-        musicVolumeSlider.onValueChanged.AddListener(delegate { ValueChangeCheck("music"); });
-        sfxVolumeSlider.onValueChanged.AddListener(delegate { ValueChangeCheck("sfx"); });
-        uiVolumeSlider.onValueChanged.AddListener(delegate { ValueChangeCheck("ui"); });
+        // Set default slider values
+        SetSliderVals();
     }
 
     public void GoToMenu(string menu)
@@ -91,6 +97,24 @@ public class MainMenu : MonoBehaviour
         currentScene = "Main Menu";
     }
 
+    /// <summary>
+    /// Set the default values for slider elements
+    /// </summary>
+    void SetSliderVals()
+    {
+        // Set default music slider elements
+        musicVolumeSlider.value = SettingsManager.SM.DefaultMusicVolume;
+        musicVolumeValue.text = Mathf.Round((musicVolumeSlider.value / musicVolumeSlider.maxValue) * 100f).ToString() + "%";
+
+        // Set default SFX slider elements
+        sfxVolumeSlider.value = SettingsManager.SM.DefaultSFXVolume;
+        sfxVolumeValue.text = Mathf.Round((sfxVolumeSlider.value / sfxVolumeSlider.maxValue) * 100f).ToString() + "%";
+
+        // Set default UI slider elements
+        uiVolumeSlider.value = SettingsManager.SM.DefaultUIVolume;
+        uiVolumeValue.text = Mathf.Round((uiVolumeSlider.value / uiVolumeSlider.maxValue) * 100f).ToString() + "%";
+    }
+
     public void ButtonHover()
     {
         AudioManager.AM.Play("Button Hover");
@@ -101,32 +125,29 @@ public class MainMenu : MonoBehaviour
         AudioManager.AM.Play("Button Click");
     }
 
-    void ValueChangeCheck(string slider)
+    /// <summary>
+    /// Changes text value of a slider to match its value.
+    /// </summary>
+    /// <param name="slider">Which slider has changed.</param>
+    public void ValueChangeCheck(Slider slider)
     {
-        float value = 0f;   // Used to display the slider value
-
-        switch(slider)
+        switch(slider.name)
         {
-            // If method was called in an unintended way
+            // Change music slider displays
+            case ("MusicSlider"):
+                musicVolumeValue.text = Mathf.Round((musicVolumeSlider.value / musicVolumeSlider.maxValue) * 100f).ToString() + "%";
+                break;
+            // Change SFX slider displays
+            case ("SFXSlider"):
+                sfxVolumeValue.text = Mathf.Round((sfxVolumeSlider.value / sfxVolumeSlider.maxValue) * 100f).ToString() + "%";
+                break;
+            // Change UI Slider displays
+            case ("UISlider"):
+                uiVolumeValue.text = Mathf.Round((uiVolumeSlider.value / uiVolumeSlider.maxValue) * 100f).ToString() + "%";
+                break;
+            // Slider doesn't exist or hasn't been implemented above
             default:
-                break;
-
-            case ("music"):
-                value = Mathf.Round((musicVolumeSlider.value / musicVolumeSlider.maxValue) * 100f);
-                musicVolumeValue.text = value.ToString() + "%";
-                AudioManager.AM.ChangeVolume("Music", musicVolumeSlider.value);
-                break;
-            case ("sfx"):
-                value = Mathf.Round((sfxVolumeSlider.value / sfxVolumeSlider.maxValue) * 100f);
-                sfxVolumeValue.text = value.ToString() + "%";
-                AudioManager.AM.ChangeVolume("SFX", sfxVolumeSlider.value);
-                AudioManager.AM.Play("Virus Click");
-                break;
-            case ("ui"):
-                value = Mathf.Round((uiVolumeSlider.value / uiVolumeSlider.maxValue) * 100f);
-                uiVolumeValue.text = value.ToString() + "%";
-                AudioManager.AM.ChangeVolume("UI", uiVolumeSlider.value);
-                AudioManager.AM.Play("Button Hover");
+                Debug.Log(slider.name + " does not exist!");
                 break;
         }
     }
