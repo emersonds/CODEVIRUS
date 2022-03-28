@@ -8,6 +8,7 @@ public class EarthRotater : MonoBehaviour
     private float rotSpeed = 50f;
 
     private GameObject earth;
+    private bool inverted;
     private bool rightPressed = false;
     private bool leftPressed = false;
 
