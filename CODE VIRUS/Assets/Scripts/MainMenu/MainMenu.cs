@@ -27,6 +27,8 @@ public class MainMenu : MonoBehaviour
     private Slider uiVolumeSlider;
     [SerializeField]
     private Text uiVolumeValue;
+    [SerializeField]
+    private Toggle invertEarthToggle;
 
     // The current menu being displayed
     private string currentScene;
@@ -44,8 +46,8 @@ public class MainMenu : MonoBehaviour
         if (!AudioManager.AM.PlayingSound("Main Theme"))
             AudioManager.AM.Play("Main Theme");
 
-        // Set default slider values
-        SetSliderVals();
+        // Set default settings values
+        SetDefaultVals();
     }
 
     public void GoToMenu(string menu)
@@ -97,10 +99,11 @@ public class MainMenu : MonoBehaviour
         currentScene = "Main Menu";
     }
 
+
     /// <summary>
     /// Set the default values for slider elements
     /// </summary>
-    void SetSliderVals()
+    void SetDefaultVals()
     {
         // Set default music slider elements
         musicVolumeSlider.value = SettingsManager.SM.DefaultMusicVolume;
@@ -126,11 +129,27 @@ public class MainMenu : MonoBehaviour
     }
 
     /// <summary>
+    /// Handles toggle behavior
+    /// </summary>
+    /// <param name="toggle">The toggle that was selected</param>
+    public void ToggleClicked(Toggle toggle)
+    {
+        switch(toggle.name)
+        {
+            case("EarthRotationToggle"):
+                SettingsManager.SM.InvertEarthRotation(toggle);
+                break;
+        }
+    }
+
+    /// <summary>
     /// Changes text value of a slider to match its value.
     /// </summary>
     /// <param name="slider">Which slider has changed.</param>
     public void ValueChangeCheck(Slider slider)
     {
+        SettingsManager.SM.VolumeChanged(slider);
+
         switch(slider.name)
         {
             // Change music slider displays

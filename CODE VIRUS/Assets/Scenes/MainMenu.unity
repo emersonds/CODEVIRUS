@@ -247,6 +247,7 @@ MonoBehaviour:
   sfxVolumeValue: {fileID: 564865521}
   uiVolumeSlider: {fileID: 1370690278}
   uiVolumeValue: {fileID: 842919335}
+  invertEarthToggle: {fileID: 0}
 --- !u!1001 &45804290
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1411,9 +1412,9 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3537373978474915649}
-        m_TargetAssemblyTypeName: SettingsManager, Assembly-CSharp
-        m_MethodName: InvertEarthRotation
+      - m_Target: {fileID: 32413758}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: ToggleClicked
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 611959661}
@@ -1516,18 +1517,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3537373978474915649}
-        m_TargetAssemblyTypeName: SettingsManager, Assembly-CSharp
-        m_MethodName: VolumeChanged
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 774791766}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Slider, UnityEngine.UI
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 32413758}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
         m_MethodName: ValueChangeCheck
@@ -2539,24 +2528,12 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3537373978474915649}
-        m_TargetAssemblyTypeName: SettingsManager, Assembly-CSharp
-        m_MethodName: VolumeChanged
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1370690278}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Slider, UnityEngine.UI
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 32413758}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
         m_MethodName: ValueChangeCheck
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 1370690278}
+          m_ObjectArgument: {fileID: 774791766}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Slider, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -3892,24 +3869,12 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3537373978474915649}
-        m_TargetAssemblyTypeName: SettingsManager, Assembly-CSharp
-        m_MethodName: VolumeChanged
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1990266359}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Slider, UnityEngine.UI
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 32413758}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
         m_MethodName: ValueChangeCheck
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 1990266359}
+          m_ObjectArgument: {fileID: 774791766}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Slider, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -4304,14 +4269,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8979fb22d5c0e70488b673f915a933f1, type: 3}
---- !u!114 &3537373978474915649 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2010536665695412519, guid: 8979fb22d5c0e70488b673f915a933f1, type: 3}
-  m_PrefabInstance: {fileID: 3537373978474915648}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2824409fc920b2d4a837d58db047abe9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
