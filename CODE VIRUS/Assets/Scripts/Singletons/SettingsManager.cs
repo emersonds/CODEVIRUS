@@ -22,6 +22,12 @@ public class SettingsManager : MonoBehaviour
     public float DefaultUIVolume { get { return defaultUIVolume; } }
     public bool DefaultInvertEarthRot { get { return defaultInvertEarthRot; } }
 
+    // Customized values
+    private bool invertEarthRot;
+
+    // Public access to customized values
+    public bool InvertEarthRot { get { return invertEarthRot; } }
+
     // Reference to self
     public static SettingsManager SM;
 
@@ -87,5 +93,11 @@ public class SettingsManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void InvertEarthRotation(Toggle toggle)
+    {
+        invertEarthRot = toggle.isOn;
+        Debug.Log("invertEarthRot (SettingsManager): " + invertEarthRot);
     }
 }

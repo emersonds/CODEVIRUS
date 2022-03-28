@@ -8,7 +8,8 @@ public class EarthRotater : MonoBehaviour
     private float rotSpeed = 50f;
 
     private GameObject earth;
-    private bool inverted;
+    private bool inverted;      // If the rotation should be inverted
+    private int invertFactor;   // This is either -1 or 1 to flip the rotation
     private bool rightPressed = false;
     private bool leftPressed = false;
 
@@ -21,9 +22,9 @@ public class EarthRotater : MonoBehaviour
     private void FixedUpdate()
     {
         if (rightPressed)
-            earth.transform.Rotate(new Vector3(0f, -rotSpeed, 0f) * Time.deltaTime, Space.World);
+            Rotate("right");
         if (leftPressed)
-            earth.transform.Rotate(new Vector3(0f, rotSpeed, 0f) * Time.deltaTime, Space.World);
+            Rotate("left");
     }
 
     public void Rotater(string direction)
@@ -50,6 +51,29 @@ public class EarthRotater : MonoBehaviour
                 break;
             case ("left"):
                 leftPressed = false;
+                break;
+        }
+    }
+    
+    void Rotate(string direction)
+    {
+        inverted = SettingsManager.SM.InvertEarthRot;
+
+        if (!inverted)
+            invertFactor = 1;
+        else
+            invertFactor = -1;
+
+        Debug.Log("EARTH ROTATER\ninverted: " + inverted + "\ninvertFactor: " + invertFactor);
+
+        switch(direction)
+        {
+            case ("right"):
+                earth.transform.Rotate(new Vector3(0f, rotSpeed * invertFactor, 0f) * Time.deltaTime, Space.World);
+                break;
+
+            case ("left"):
+                earth.transform.Rotate(new Vector3(0f, -rotSpeed * invertFactor, 0f) * Time.deltaTime, Space.World);
                 break;
         }
     }
