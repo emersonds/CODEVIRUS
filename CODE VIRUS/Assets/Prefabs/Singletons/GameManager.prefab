@@ -54,10 +54,10 @@ MonoBehaviour:
   deathsPerMin: 0
   deathMultiplier: 1
   baseMutationPointsRate: 3.59
-  baseInfectedRate: 3.8
+  baseInfectedRate: 6.74
   baseDeathRate: 2.7
-  baseInfectCost: 5
-  baseLethalCost: 5
-  baseResilienceCost: 5
-  baseClickerCost: 5
-  baseIncomeCost: 5
+  baseInfectCost: 10
+  baseLethalCost: 25
+  baseResilienceCost: 15
+  baseClickerCost: 3
+  baseIncomeCost: 10

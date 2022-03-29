@@ -6,6 +6,8 @@ public class EarthRotater : MonoBehaviour
 {
     [SerializeField]
     private float rotSpeed = 50f;
+    [SerializeField]
+    private GameObject virusButton;
 
     private GameObject earth;
     private bool inverted;      // If the rotation should be inverted
@@ -76,6 +78,11 @@ public class EarthRotater : MonoBehaviour
                 earth.transform.Rotate(new Vector3(0f, -rotSpeed * invertFactor, 0f) * Time.deltaTime, Space.World);
                 break;
         }
+    }
+
+    public void EnableVirusButton()
+    {
+        virusButton.SetActive(true);
     }
 
     public void ChangeScene(string scene)

@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private float baseMutationPointsRate = 3.59f;
     [SerializeField]
-    private float baseInfectedRate = 3.8f;
+    private float baseInfectedRate = 5.6f;
     [SerializeField]
     private float baseDeathRate = 2.7f;
 
@@ -62,6 +62,14 @@ public class GameManager : MonoBehaviour
     public float ResilienceCost { get { return resilienceCost; } }
     public float ClickerCost { get { return clickerCost; } }
     public float IncomeCost { get { return incomeCost; } }
+
+    // First time playing data
+    private bool startingContinentSelected = false;
+    private GameObject startingContinent;
+
+    // Public references to starting data
+    public bool StartingContinentSelected { get { return startingContinentSelected; } }
+    public GameObject StartingContinent { get { return startingContinent; } }
 
     // How many of an upgrade the players owns
     private int infectCounter = 0;
@@ -305,6 +313,12 @@ public class GameManager : MonoBehaviour
             }
             yield return new WaitForSeconds(1f);
         }
+    }
+
+    public void SetStartingContinent(GameObject continent)
+    {
+        startingContinentSelected = true;
+        startingContinent = continent;
     }
 
     public void ChangeScenes(string scene)
