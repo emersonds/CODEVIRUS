@@ -11,8 +11,12 @@ public class ContinentDisplayer : MonoBehaviour
     private Text continentInfo;
     [SerializeField]
     private float updaterTimeToWait;
+    [SerializeField]
+    private GameObject startHereButton;
 
     private GameObject currentContinent;
+    public GameObject CurrentContinent { get { return currentContinent; } }
+
     private bool updaterRunning;
 
     private void Start()
@@ -60,6 +64,12 @@ public class ContinentDisplayer : MonoBehaviour
                              "Infected Population: " + infectedPopulation + "\n" +
                              "Virus-Related Deaths: " + deadPopulation + "\n" +
                              "Neighbors: " + neighbors;
+
+        // Display or hide starting continent button
+        if (!GameManager.GM.StartingContinentSelected)
+            startHereButton.SetActive(true);
+        else
+            startHereButton.SetActive(false);
     }
 
     public void EnableContinentDisplay(bool enable)

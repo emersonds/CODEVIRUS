@@ -319,6 +319,8 @@ public class GameManager : MonoBehaviour
     {
         startingContinentSelected = true;
         startingContinent = continent;
+
+        Debug.Log("Starting continent selected: " + startingContinent.name);
     }
 
     public void ChangeScenes(string scene)
