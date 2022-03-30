@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class ContinentDisplayer : MonoBehaviour
 {
     [SerializeField]
+    private GameObject continentInfoPanel;
+    [SerializeField]
     private Text continentTitle;
     [SerializeField]
     private Text continentInfo;
@@ -21,8 +23,7 @@ public class ContinentDisplayer : MonoBehaviour
 
     private void Start()
     {
-        if (!updaterRunning)
-            StartCoroutine(InfoUpdater());
+        EnableContinentDisplay(false);
     }
 
     public void SetContinentDisplay(GameObject continent)
@@ -74,7 +75,7 @@ public class ContinentDisplayer : MonoBehaviour
 
     public void EnableContinentDisplay(bool enable)
     {
-        gameObject.SetActive(enable);
+        continentInfoPanel.SetActive(enable);
 
         if (!enable)
         {

@@ -815,6 +815,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bdf1750f932e0c4c8258a7d71154009, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  continentInfoPanel: {fileID: 2012389686}
   continentTitle: {fileID: 43668067}
   continentInfo: {fileID: 792705731}
   updaterTimeToWait: 3
@@ -832,6 +833,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingPanel: {fileID: 1343643565}
+  startHereButton: {fileID: 589005027}
 --- !u!1 &589005027
 GameObject:
   m_ObjectHideFlags: 0

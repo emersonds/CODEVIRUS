@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
 
     // Infected continents
     [SerializeField]
-    private List<string> infectedContinentNames = new List<string>();   // Names of infected continents for reassignment
+    private Dictionary<string, float> infectedContinentReferences = new Dictionary<string, float>();   // Names/infected populations of infected continents for reassignment
     [SerializeField]
     private List<Continent> infectedContinents = new List<Continent>(); // Continents that have been infected
 
@@ -144,34 +144,11 @@ public class GameManager : MonoBehaviour
 
         if (scene.name == "Simulation")
         {
-            // Save reference to Earth
-            if (earth == null)
-                earth = GameObject.Find("Earth");
-
-            // Assign all continents (children) to an array from Earth (parent)
-            for (int i = 0; i < earth.transform.childCount; i++)
-            {
-                continents.Add(earth.transform.GetChild(i).GetComponent<Continent>());
-            }
-
-            // Add all continents with matching infected names to infected array
-            for (int i = 0; i < continents.Count; i++)
-            {
-                // Check if the current continent should be infected
-                if (infectedContinentNames.Contains(continents[i].name))
-                    infectedContinents.Add(continents[i]);
-            }
+            UpdateContinentList();
         }
         else if (scene.name == "Clicker")
         {
-            // Save reference to Virus
-            if (virus == null)
-                virus = GameObject.Find("Virus").GetComponent<Virus>();
-
-            // Make upgrades appear
-            MakeUpgradesVisible(virus.Mushrooms, infectCounter);
-            MakeUpgradesVisible(virus.Spikes, lethalCounter);
-            MakeUpgradesVisible(virus.Donuts, resilienceCounter);
+            
         }
     }
 
@@ -375,11 +352,52 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Called when the Clicker scene is loaded.
+    /// Saves a reference to the virus and makes its parts visible
+    /// </summary>
+    void UpdateVirus()
+    {
+        // Save reference to Virus
+        if (virus == null)
+            virus = GameObject.Find("Virus").GetComponent<Virus>();
+
+        // Make upgrades appear
+        MakeUpgradesVisible(virus.Mushrooms, infectCounter);
+        MakeUpgradesVisible(virus.Spikes, lethalCounter);
+        MakeUpgradesVisible(virus.Donuts, resilienceCounter);
+    }
+
+    /// <summary>
+    /// Called when the simulation scene is loaded.
+    /// Gets reference to earth and populates continents/infected continents.
+    /// </summary>
+    void UpdateContinentList()
+    {
+        // Save reference to Earth
+        if (earth == null)
+            earth = GameObject.Find("Earth");
+
+        // Assign all continents (children) to an array from Earth (parent)
+        for (int i = 0; i < earth.transform.childCount; i++)
+        {
+            continents.Add(earth.transform.GetChild(i).GetComponent<Continent>());
+        }
+
+        // Add all continents with matching infected names to infected array
+        for (int i = 0; i < continents.Count; i++)
+        {
+            // Check if the current continent should be infected
+            if (infectedContinentReferences.ContainsKey(continents[i].name))
+                infectedContinents.Add(continents[i]);
+        }
+    }
+
     public void SetStartingContinent(GameObject continent)
     {
         startingContinentSelected = true;
         startingContinent = continent;
-        infectedContinentNames.Add(startingContinent.GetComponent<Continent>().name);
+        infectedContinentReferences.Add(startingContinent.GetComponent<Continent>().name, startingContinent.GetComponent<Continent>().infectedCount);
         infectedContinents.Add(startingContinent.GetComponent<Continent>());
 
         Debug.Log("Starting continent selected: " + startingContinent.name);

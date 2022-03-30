@@ -19,6 +19,11 @@ public class EarthRotater : MonoBehaviour
     void Start()
     {
         earth = GameObject.Find("Earth");
+
+        if (!GameManager.GM.StartingContinentSelected)
+            virusButton.SetActive(false);
+        else
+            virusButton.SetActive(true);
     }
 
     private void FixedUpdate()
