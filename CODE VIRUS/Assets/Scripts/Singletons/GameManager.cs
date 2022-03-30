@@ -107,6 +107,9 @@ public class GameManager : MonoBehaviour
     private bool infectedGeneratorRunning = false;
     private bool deathGeneratorRunning = false;
 
+    // Used for easier scene checking
+    private string currentScene;
+
     private void Awake()
     {
         // Checks if a GameManager instance exists and destroys it
@@ -136,6 +139,8 @@ public class GameManager : MonoBehaviour
         Debug.Log("OnSceneLoaded: " + scene.name);
         Debug.Log(mode);
 
+        currentScene = scene.name;
+
         // Clear continents and infectedContinents lists to prevent duplicate elements
         //if (continents.Count > 0)
         continents.Clear();
@@ -148,7 +153,7 @@ public class GameManager : MonoBehaviour
         }
         else if (scene.name == "Clicker")
         {
-            
+            UpdateVirus();
         }
     }
 
@@ -165,16 +170,6 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (virus == null &&
-            SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Clicker"))
-        {
-            virus = GameObject.Find("Virus").GetComponent<Virus>();
-            Debug.Log("Virus Assigned");
-            MakeUpgradesVisible(virus.Mushrooms, infectCounter);
-            MakeUpgradesVisible(virus.Spikes, lethalCounter);
-            MakeUpgradesVisible(virus.Donuts, resilienceCounter);
-        }
-
         AddMutationPoints("Passive");
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -319,16 +314,56 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Generates infected points/people
+    /// Generates infected points/people every second
     /// </summary>
     /// <returns></returns>
     private IEnumerator GenerateInfected()
     {
         infectedGeneratorRunning = true;
+
+        // Loop runs forever
         for (; ; )
         {
-            infectedPoints += infectedPerMin;
+            // Checks if there are any infected continents
+            if (infectedContinentReferences.Count > 0)
+            {
+                int j = 0;
+                List<string> infectedKeys = new List<string>(infectedContinentReferences.Keys);
+                foreach (string key in infectedKeys)
+                {
+                    // For each infected continent, add infected people to its population
+                    infectedContinentReferences[key] += infectedPerMin;
+                    j++;
+                }
+
+                // Add total amount of infected people to total infected points
+                infectedPoints += infectedPerMin * j;
+            }
+
+            // This updates the actual continent's infected population
+            UpdateInfected();
+
+            // Wait one second before looping again
             yield return new WaitForSeconds(1f);
+        }
+    }
+
+    private void UpdateInfected()
+    {
+        // Only update during Simulation
+        // This is because the game manager loses a reference to continents
+        // when the game switches to the clicker scene, so this prevents those errors
+        if (currentScene == "Simulation")
+        {
+            // Make sure a continent has been infected
+            if (infectedContinentReferences.Count > 0)
+            {
+                // Update actual continent's infected population
+                for (int i = 0; i < infectedContinentReferences.Count; i++)
+                {
+                    infectedContinents[i].infectedCount = infectedContinentReferences[infectedContinents[i].name];
+                }
+            }
         }
     }
 
