@@ -36,7 +36,6 @@ public class EarthRotater : MonoBehaviour
 
     public void Rotater(string direction)
     {
-        Debug.Log("Rotater called");
         switch(direction)
         {
             case ("right"):
@@ -71,7 +70,6 @@ public class EarthRotater : MonoBehaviour
         else
             invertFactor = -1;
 
-        Debug.Log("EARTH ROTATER\ninverted: " + inverted + "\ninvertFactor: " + invertFactor);
 
         switch(direction)
         {

@@ -18,4 +18,14 @@ public class Continent : MonoBehaviour
     public string biome;
     [SerializeField]
     public Neighbor[] neighbors;
+
+    private void Start()
+    {
+        gameObject.GetComponent<Outline>().enabled = false;
+    }
+
+    public void SetSelected(bool selected)
+    {
+        gameObject.GetComponent<Outline>().enabled = selected;
+    }
 }

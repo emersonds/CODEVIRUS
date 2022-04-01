@@ -7,6 +7,9 @@ public class Earth : MonoBehaviour
     [SerializeField]
     private GameObject continentDisplayer;
 
+    // Last selected continent
+    private GameObject lastHit = null;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,8 +36,12 @@ public class Earth : MonoBehaviour
             // Checks which continent was clicked if the ray hit a continent
             if (Physics.Raycast(ray, out hit))
             {
+                if (lastHit != null)
+                    lastHit.GetComponent<Continent>().SetSelected(false);
+                hit.collider.gameObject.GetComponent<Continent>().SetSelected(true);
                 continentDisplayer.GetComponent<ContinentDisplayer>().SetContinentDisplay(hit.collider.gameObject);
                 continentDisplayer.GetComponent<ContinentDisplayer>().EnableContinentDisplay(true);
+                lastHit = hit.collider.gameObject;
             }
         }
     }

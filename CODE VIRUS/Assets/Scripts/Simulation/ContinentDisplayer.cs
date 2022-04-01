@@ -81,6 +81,8 @@ public class ContinentDisplayer : MonoBehaviour
         {
             StopCoroutine(InfoUpdater());
             updaterRunning = false;
+            if (currentContinent != null)
+                currentContinent.GetComponent<Continent>().SetSelected(false);
         }
         else if (enable && !updaterRunning)
         {
