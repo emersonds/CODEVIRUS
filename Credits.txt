@@ -3,3 +3,6 @@ https://thoseawesomeguys.com/prompts/
 
 Skyboxes:
 https://assetstore.unity.com/packages/2d/textures-materials/sky/skybox-series-free-103633
+
+Quick Outline:
+https://assetstore.unity.com/packages/tools/particles-effects/quick-outline-115488
