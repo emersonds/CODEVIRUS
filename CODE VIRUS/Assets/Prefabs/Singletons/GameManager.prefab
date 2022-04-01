@@ -49,15 +49,17 @@ MonoBehaviour:
   mutationPointsMultiplier: 1
   infectedPoints: 0
   infectedPerMin: 0
-  infectedMultiplier: 1
+  infectedMultiplier: 2.5
   deathPoints: 0
   deathsPerMin: 0
   deathMultiplier: 1
-  baseMutationPointsRate: 3.59
-  baseInfectedRate: 6.74
-  baseDeathRate: 2.7
+  baseMutationPointsRate: 4.1
+  baseInfectedRate: 1500
+  baseDeathRate: 700
   baseInfectCost: 10
   baseLethalCost: 25
   baseResilienceCost: 15
   baseClickerCost: 3
   baseIncomeCost: 10
+  infectedContinents: []
+  continents: []

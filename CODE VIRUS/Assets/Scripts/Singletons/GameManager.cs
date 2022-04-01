@@ -332,6 +332,7 @@ public class GameManager : MonoBehaviour
                 foreach (string key in infectedKeys)
                 {
                     // For each infected continent, add infected people to its population
+                    //if (infectedContinentReferences[key] + infectedPerMin <= the continent's total population idk
                     infectedContinentReferences[key] += infectedPerMin;
                     j++;
                 }
