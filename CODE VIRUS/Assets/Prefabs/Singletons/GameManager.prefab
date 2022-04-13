@@ -53,13 +53,22 @@ MonoBehaviour:
   deathPoints: 0
   deathsPerMin: 0
   deathMultiplier: 15.7
+  resilience: 0
+  infectivity: 0
   baseMutationPointsRate: 20
   baseInfectedRate: 1600
   baseDeathRate: 800
+  baseResilienceRate: 0.1
+  baseInfectivityRate: 0.14
   baseInfectCost: 10
   baseLethalCost: 25
   baseResilienceCost: 15
   baseClickerCost: 3
   baseIncomeCost: 10
   infectedContinents: []
+  mildBiome: 0.6
+  moderateBiome: 0.45
+  harshBiome: 0.275
+  infectThreshold: 0.55
   continents: []
+  infectionStrength: 45

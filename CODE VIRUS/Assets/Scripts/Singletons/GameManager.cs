@@ -29,6 +29,10 @@ public class GameManager : MonoBehaviour
     private float deathsPerMin = 0;
     [SerializeField]
     private float deathMultiplier = 1;
+    [SerializeField]
+    private float resilience = 0;
+    [SerializeField]
+    private float infectivity = 0;
 
     // Public references to private data
     public float MutationPoints { get { return mutationPoints; } }
@@ -42,7 +46,10 @@ public class GameManager : MonoBehaviour
     private float baseInfectedRate = 5.6f;
     [SerializeField]
     private float baseDeathRate = 2.7f;
-
+    [SerializeField]
+    private float baseResilienceRate = 0.1f;
+    [SerializeField]
+    private float baseInfectivityRate = 0.14f;
 
     // Base cost of upgrades
     [SerializeField]
@@ -91,6 +98,16 @@ public class GameManager : MonoBehaviour
     private float clickerCost;
     private float incomeCost;
 
+    // These values affect the chance a continent can be infected
+    [SerializeField]
+    private float mildBiome = 0.275f;
+    [SerializeField]
+    private float moderateBiome = 0.45f;
+    [SerializeField]
+    private float harshBiome = 0.6f;
+    [SerializeField]
+    private float infectThreshold = 0.55f;
+
     // Reference to virus
     private Virus virus;
 
@@ -109,6 +126,10 @@ public class GameManager : MonoBehaviour
 
     // Used for easier scene checking
     private string currentScene;
+
+    // Used for how frequently the game checks if it can infect
+    [SerializeField]
+    private float infectionStrength = 45f;
 
     private void Awake()
     {
@@ -150,9 +171,11 @@ public class GameManager : MonoBehaviour
         if (scene.name == "Simulation")
         {
             UpdateContinentList();
+            StartCoroutine(InfectNeighbor());
         }
         else if (scene.name == "Clicker")
         {
+            StopCoroutine(InfectNeighbor());
             UpdateVirus();
         }
     }
@@ -215,6 +238,10 @@ public class GameManager : MonoBehaviour
                         virus.ShowUpgrade(virus.Mushrooms, infectCounter - 1);
 
                     infectedPerMin = Mathf.Ceil((baseInfectedRate * infectCounter) * infectedMultiplier);
+
+                    infectionStrength = Mathf.Clamp(infectionStrength - 1, 1, 15);
+
+                    infectivity = Mathf.Clamp01(baseInfectivityRate * infectCounter);
                 }
                 break;
             case ("lethal"):
@@ -248,6 +275,7 @@ public class GameManager : MonoBehaviour
                     if (resilienceCounter < 9)
                         virus.ShowUpgrade(virus.Donuts, resilienceCounter - 1);
 
+                    resilience = Mathf.Clamp01(baseResilienceRate * resilienceCounter);
                 }
                 break;
             case ("clicker"):
@@ -390,6 +418,57 @@ public class GameManager : MonoBehaviour
                 deathPoints += deathsPerMin;
             }
             yield return new WaitForSeconds(1f);
+        }
+    }
+
+    private IEnumerator InfectNeighbor()
+    {
+        // Initialize chanceToInfect variable
+        float chanceToInfect = 0;
+
+        // Used for calculating if a neighbor can be infected
+        float biomeVal = 0;         // How harsh the climate is (resilience)
+
+        if (infectedContinents.Count > 0)
+        {
+            for (; ; )
+            {
+                for (int i = 0; i < infectedContinents.Count; i++)
+                {
+                    for (int j = 0; j < infectedContinents[i].neighbors.Length; j++)
+                    {
+                        Continent currNeighbor = infectedContinents[i].neighbors[j].continent;
+
+                        if (!currNeighbor.isInfected)
+                        {
+
+                            switch (currNeighbor.biome)
+                            {
+                                case ("mild"):
+                                    biomeVal = mildBiome;
+                                    break;
+
+                                case ("moderate"):
+                                    biomeVal = moderateBiome;
+                                    break;
+
+                                case ("harsh"):
+                                    biomeVal = harshBiome;
+                                    break;
+                            }
+
+                            chanceToInfect = Mathf.Clamp01(infectivity * ((2 * resilience) - biomeVal));
+
+                            if (chanceToInfect > infectThreshold)
+                            {
+                                InfectContinent(currNeighbor.gameObject);
+                            }
+                        }
+                    }
+                }
+
+                yield return new WaitForSeconds(infectionStrength);
+            }
         }
     }
 
