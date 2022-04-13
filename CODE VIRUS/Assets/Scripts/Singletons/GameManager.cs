@@ -199,7 +199,7 @@ public class GameManager : MonoBehaviour
         switch (upgrade)
         {
             case ("infect"):
-                if (infectCounter < 9 && (mutationPoints - infectCost >= 0))
+                if (mutationPoints - infectCost >= 0)
                 {
                     // Check if timer running
                     if (!infectedGeneratorRunning)
@@ -208,15 +208,17 @@ public class GameManager : MonoBehaviour
                     // Cost
                     mutationPoints -= infectCost;
                     infectCounter++;
-                    infectCost = Mathf.Ceil(baseInfectCost * Mathf.Pow(4, infectCounter));
+                    infectCost = Mathf.Ceil(baseInfectCost * Mathf.Pow(3, infectCounter));
 
                     // Upgrade
-                    virus.ShowUpgrade(virus.Mushrooms, infectCounter - 1);
+                    if (infectCounter < 9)
+                        virus.ShowUpgrade(virus.Mushrooms, infectCounter - 1);
+
                     infectedPerMin = Mathf.Ceil((baseInfectedRate * infectCounter) * infectedMultiplier);
                 }
                 break;
             case ("lethal"):
-                if (lethalCounter < 9 && (mutationPoints - lethalCost >= 0))
+                if (mutationPoints - lethalCost >= 0)
                 {
                     // Check if timer running
                     if (!deathGeneratorRunning)
@@ -225,23 +227,26 @@ public class GameManager : MonoBehaviour
                     // Cost
                     mutationPoints -= lethalCost;
                     lethalCounter++;
-                    lethalCost = Mathf.Ceil(baseLethalCost * Mathf.Pow(4, lethalCounter));
+                    lethalCost = Mathf.Ceil(baseLethalCost * Mathf.Pow(3, lethalCounter));
 
                     // Upgrade
-                    virus.ShowUpgrade(virus.Spikes, lethalCounter - 1);
+                    if (lethalCounter < 9)
+                        virus.ShowUpgrade(virus.Spikes, lethalCounter - 1);
+
                     deathsPerMin = Mathf.Ceil((baseDeathRate * lethalCounter) * deathMultiplier);
                 }
                 break;
             case ("resilience"):
-                if (resilienceCounter < 9 && (mutationPoints - resilienceCost >= 0))
+                if (mutationPoints - resilienceCost >= 0)
                 {
                     // Cost
                     mutationPoints -= resilienceCost;
                     resilienceCounter++;
-                    resilienceCost = Mathf.Ceil(baseResilienceCost * Mathf.Pow(4, resilienceCounter));
+                    resilienceCost = Mathf.Ceil(baseResilienceCost * Mathf.Pow(3, resilienceCounter));
 
                     // Upgrade
-                    virus.ShowUpgrade(virus.Donuts, resilienceCounter - 1);
+                    if (resilienceCounter < 9)
+                        virus.ShowUpgrade(virus.Donuts, resilienceCounter - 1);
 
                 }
                 break;
@@ -251,7 +256,7 @@ public class GameManager : MonoBehaviour
                     // Cost
                     mutationPoints -= clickerCost;
                     clickerCounter++;
-                    clickerCost = Mathf.Ceil(baseClickerCost * Mathf.Pow(4, clickerCounter));
+                    clickerCost = Mathf.Ceil(baseClickerCost * Mathf.Pow(3, clickerCounter));
 
                     // Upgrade
                     defaultClickValue *= 2;
@@ -267,7 +272,7 @@ public class GameManager : MonoBehaviour
                     // Cost
                     mutationPoints -= incomeCost;
                     incomeCounter++;
-                    incomeCost = Mathf.Ceil(baseIncomeCost * Mathf.Pow(4, incomeCounter));
+                    incomeCost = Mathf.Ceil(baseIncomeCost * Mathf.Pow(3, incomeCounter));
 
                     // Upgrade
                     mutationPointsPerMin = Mathf.Ceil((baseMutationPointsRate * incomeCounter) * mutationPointsMultiplier);

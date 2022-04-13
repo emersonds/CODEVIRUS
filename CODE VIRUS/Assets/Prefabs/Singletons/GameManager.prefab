@@ -46,16 +46,16 @@ MonoBehaviour:
   defaultClickValue: 1
   mutationPoints: 0
   mutationPointsPerMin: 0
-  mutationPointsMultiplier: 1
+  mutationPointsMultiplier: 13
   infectedPoints: 0
   infectedPerMin: 0
-  infectedMultiplier: 2.5
+  infectedMultiplier: 43.8
   deathPoints: 0
   deathsPerMin: 0
-  deathMultiplier: 1
-  baseMutationPointsRate: 4.1
-  baseInfectedRate: 1500
-  baseDeathRate: 700
+  deathMultiplier: 15.7
+  baseMutationPointsRate: 20
+  baseInfectedRate: 1600
+  baseDeathRate: 800
   baseInfectCost: 10
   baseLethalCost: 25
   baseResilienceCost: 15

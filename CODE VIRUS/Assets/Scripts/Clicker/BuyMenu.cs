@@ -35,19 +35,19 @@ public class BuyMenu : MonoBehaviour
                 context.text = "How many people you have infected or killed with your virus.";
                 break;
             case ("infectivity"):
-                context.text = "Increase how contagious your virus is by 10%.\nPrice: " + GameManager.GM.InfectCost;
+                context.text = "Increase how contagious your virus is by 10%.\nPrice: " + GameManager.GM.GetSuffix(GameManager.GM.InfectCost);
                 break;
             case ("lethality"):
-                context.text = "Increase how deadly your virus is by 10%.\nPrice: " + GameManager.GM.LethalCost;
+                context.text = "Increase how deadly your virus is by 10%.\nPrice: " + GameManager.GM.GetSuffix(GameManager.GM.LethalCost);
                 break;
             case ("resilience"):
-                context.text = "Increase how sturdy your virus is by 10%.\nPrice: " + GameManager.GM.ResilienceCost;
+                context.text = "Increase how sturdy your virus is by 10%.\nPrice: " + GameManager.GM.GetSuffix(GameManager.GM.ResilienceCost);
                 break;
             case ("clicker"):
-                context.text = "Double the amount of points earned from one click.\nPrice: " + GameManager.GM.ClickerCost;
+                context.text = "Double the amount of points earned from one click.\nPrice: " + GameManager.GM.GetSuffix(GameManager.GM.ClickerCost);
                 break;
             case ("income"):
-                context.text = "Increase the amount of points you earn passively by 10%.\nPrice: " + GameManager.GM.IncomeCost;
+                context.text = "Increase the amount of points you earn passively by 10%.\nPrice: " + GameManager.GM.GetSuffix(GameManager.GM.IncomeCost);
                 break;
         }
     }
