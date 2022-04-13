@@ -425,7 +425,10 @@ public class GameManager : MonoBehaviour
         {
             // Check if the current continent should be infected
             if (infectedContinentReferences.ContainsKey(continents[i].name))
+            {
                 infectedContinents.Add(continents[i]);
+                InfectContinent(continents[i].gameObject);
+            }
         }
     }
 
@@ -433,10 +436,22 @@ public class GameManager : MonoBehaviour
     {
         startingContinentSelected = true;
         startingContinent = continent;
-        infectedContinentReferences.Add(startingContinent.GetComponent<Continent>().name, startingContinent.GetComponent<Continent>().infectedCount);
-        infectedContinents.Add(startingContinent.GetComponent<Continent>());
+        InfectContinent(continent);
 
         Debug.Log("Starting continent selected: " + startingContinent.name);
+    }
+
+    public void InfectContinent(GameObject continent)
+    {
+        if (!infectedContinentReferences.ContainsKey(continent.GetComponent<Continent>().name))
+            infectedContinentReferences.Add(continent.GetComponent<Continent>().name, continent.GetComponent<Continent>().infectedCount);
+
+        if (!infectedContinents.Contains(continent.GetComponent<Continent>()))
+            infectedContinents.Add(continent.GetComponent<Continent>());
+
+        continent.GetComponent<Continent>().isInfected = true;
+
+        Debug.Log(continent.name + " has been infected.");
     }
 
     public void ChangeScenes(string scene)

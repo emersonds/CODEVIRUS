@@ -818,7 +818,7 @@ MonoBehaviour:
   continentInfoPanel: {fileID: 2012389686}
   continentTitle: {fileID: 43668067}
   continentInfo: {fileID: 792705731}
-  updaterTimeToWait: 3
+  updaterTimeToWait: 1
   startHereButton: {fileID: 589005027}
 --- !u!114 &524557780
 MonoBehaviour:
