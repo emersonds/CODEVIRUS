@@ -462,6 +462,7 @@ public class GameManager : MonoBehaviour
                             if (chanceToInfect > infectThreshold)
                             {
                                 InfectContinent(currNeighbor.gameObject);
+                                break;
                             }
                         }
                     }
