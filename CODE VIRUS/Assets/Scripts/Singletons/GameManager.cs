@@ -82,6 +82,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private Dictionary<string, float> infectedContinentReferences = new Dictionary<string, float>();   // Names/infected populations of infected continents for reassignment
     [SerializeField]
+    private Dictionary<string, float> dyingContinentReferences = new Dictionary<string, float>();   // Names/death populations of infected continents for reassignment
+    [SerializeField]
     private List<Continent> infectedContinents = new List<Continent>(); // Continents that have been infected
 
     // How many of an upgrade the players owns
@@ -412,12 +414,46 @@ public class GameManager : MonoBehaviour
         {
             if (infectedPoints - deathsPerMin >= 0)
             {
-                Debug.Log("Deaths have occurred.\nDeaths Per Min: " + deathsPerMin +
-                    "\nInfected Points: " + infectedPoints + "\nDeath Points: " + deathPoints);
-                infectedPoints -= deathsPerMin;
-                deathPoints += deathsPerMin;
+                // Checks if there are any infected continents
+                if (infectedContinentReferences.Count > 0)
+                {
+                    int j = 0;
+                    List<string> deathKeys = new List<string>(dyingContinentReferences.Keys);
+                    foreach (string key in deathKeys)
+                    {
+                        // For each infected continent, add infected people to its population
+                        dyingContinentReferences[key] += deathsPerMin;
+                        j++;
+                    }
+
+                    // Add total amount of infected people to total infected points
+                    deathPoints += infectedPerMin * j;
+                }
             }
+
+            UpdateDeaths();
+
             yield return new WaitForSeconds(1f);
+        }
+    }
+
+    private void UpdateDeaths()
+    {
+        // Only update during Simulation
+        // This is because the game manager loses a reference to continents
+        // when the game switches to the clicker scene, so this prevents those errors
+        if (currentScene == "Simulation")
+        {
+            // Make sure a continent has been infected
+            if (infectedContinentReferences.Count > 0)
+            {
+                // Update actual continent's infected population
+                for (int i = 0; i < dyingContinentReferences.Count; i++)
+                {
+                    infectedContinents[i].deathCount = dyingContinentReferences[infectedContinents[i].name];
+                    infectedContinents[i].totalPopulation -= infectedContinents[i].deathCount;
+                }
+            }
         }
     }
 
@@ -529,7 +565,10 @@ public class GameManager : MonoBehaviour
     public void InfectContinent(GameObject continent)
     {
         if (!infectedContinentReferences.ContainsKey(continent.GetComponent<Continent>().name))
+        {
             infectedContinentReferences.Add(continent.GetComponent<Continent>().name, continent.GetComponent<Continent>().infectedCount);
+            dyingContinentReferences.Add(continent.GetComponent<Continent>().name, continent.GetComponent<Continent>().infectedCount);
+        }
 
         if (!infectedContinents.Contains(continent.GetComponent<Continent>()))
             infectedContinents.Add(continent.GetComponent<Continent>());
