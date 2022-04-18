@@ -13,6 +13,8 @@ public class MainMenu : MonoBehaviour
     GameObject optionsPanel;
     [SerializeField]
     GameObject instructionsPanel;
+    [SerializeField]
+    GameObject creditsPanel;
 
     // Options Menu
     [SerializeField]
@@ -70,6 +72,10 @@ public class MainMenu : MonoBehaviour
                 GoToInstructions();
                 break;
 
+            case ("credits"):
+                GoToCredits();
+                break;
+
             case ("quit"):
                 Application.Quit();
                 break;
@@ -95,10 +101,17 @@ public class MainMenu : MonoBehaviour
     {
         optionsPanel.SetActive(false);
         instructionsPanel.SetActive(false);
+        creditsPanel.SetActive(false);
         mainMenuPanel.SetActive(true);
         currentScene = "Main Menu";
     }
 
+    void GoToCredits()
+    {
+        mainMenuPanel.SetActive(false);
+        creditsPanel.SetActive(true);
+        currentScene = "Credits";
+    }
 
     /// <summary>
     /// Set the default values for slider elements
@@ -167,6 +180,22 @@ public class MainMenu : MonoBehaviour
             // Slider doesn't exist or hasn't been implemented above
             default:
                 Debug.Log(slider.name + " does not exist!");
+                break;
+        }
+    }
+
+    public void VisitCredit(string credit)
+    {
+        switch(credit)
+        {
+            case ("arrows"):
+                Application.OpenURL("https://thoseawesomeguys.com/prompts/");
+                break;
+            case ("skyboxes"):
+                Application.OpenURL("https://assetstore.unity.com/packages/2d/textures-materials/sky/skybox-series-free-103633");
+                break;
+            case ("outline"):
+                Application.OpenURL("https://assetstore.unity.com/packages/tools/particles-effects/quick-outline-115488");
                 break;
         }
     }
