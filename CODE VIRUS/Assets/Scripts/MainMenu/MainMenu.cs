@@ -61,7 +61,7 @@ public class MainMenu : MonoBehaviour
                 break;
 
             case ("play"):
-                SceneManager.LoadScene("Simulation");
+                SceneManager.LoadScene("Clicker");
                 break;
 
             case ("options"):

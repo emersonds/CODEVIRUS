@@ -63,7 +63,7 @@ public class Virus : MonoBehaviour
                 if (hit.transform.name == "Virus")
                 {
                     // Points stuff here ...
-                    GameManager.GM.AddMutationPoints("Click");
+                    GameManager.GM.AddMutationPoints();
                     AudioManager.AM.Play("Virus Click");
                     animator.Play("Virus_Click", -1, 0f);
                     Debug.Log("Player clicked virus.");

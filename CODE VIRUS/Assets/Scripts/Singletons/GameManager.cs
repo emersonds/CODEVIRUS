@@ -8,6 +8,10 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class GameManager : MonoBehaviour
 {
+    // Reference to "scenes"
+    private GameObject clickerScene;
+    private GameObject simulationScene;
+
     // Points
     [SerializeField]
     private float defaultClickValue = 1;
@@ -164,21 +168,19 @@ public class GameManager : MonoBehaviour
 
         currentScene = scene.name;
 
-        // Clear continents and infectedContinents lists to prevent duplicate elements
-        //if (continents.Count > 0)
-        continents.Clear();
-        //if (infectedContinents.Count > 0)
-        infectedContinents.Clear();
+        if (scene.name == "Clicker")
+        {
+            // Assign game objects to "scene" objects
+            if (clickerScene == null)
+                clickerScene = GameObject.Find("Clicker");
+            if (simulationScene == null)
+                simulationScene = GameObject.Find("Simulation");
 
-        if (scene.name == "Simulation")
-        {
-            UpdateContinentList();
-            StartCoroutine(InfectNeighbor());
-        }
-        else if (scene.name == "Clicker")
-        {
-            StopCoroutine(InfectNeighbor());
-            UpdateVirus();
+            // Main menu loads simulation scene by default
+            if (clickerScene.activeSelf)
+            {
+                clickerScene.SetActive(false);
+            }
         }
     }
 
@@ -195,7 +197,6 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        AddMutationPoints("Passive");
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("MainMenu"))
@@ -205,18 +206,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void AddMutationPoints(string source)
+    public void AddMutationPoints()
     {
-        switch (source)
-        {
-            case ("Click"):
-                mutationPoints += (int)defaultClickValue;
-                break;
-
-            case ("Passive"):
-                //mutationPoints += (int)((mutationPointsPerMin * Time.deltaTime) * mutationPointsMultiplier);
-                break;
-        }
+        mutationPoints += (int)defaultClickValue;
     }
 
     public void UpgradeVirus(string upgrade)
@@ -580,7 +572,18 @@ public class GameManager : MonoBehaviour
 
     public void ChangeScenes(string scene)
     {
-        SceneManager.LoadScene(scene);
+        switch(scene)
+        {
+            case ("Clicker"):
+                clickerScene.SetActive(true);
+                simulationScene.SetActive(false);
+                break;
+
+            case ("Simulation"):
+                simulationScene.SetActive(true);
+                clickerScene.SetActive(false);
+                break;
+        }
     }
 
     /// <summary>
