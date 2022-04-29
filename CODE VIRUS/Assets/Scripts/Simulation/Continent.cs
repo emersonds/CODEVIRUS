@@ -20,10 +20,22 @@ public class Continent : MonoBehaviour
     public string biome;
     [SerializeField]
     public Neighbor[] neighbors;
+    [SerializeField]
+    Material infectionMaterial;
+    [SerializeField]
+    Material deathMaterial;
+
+    private Material baseMaterial;
 
     private void Start()
     {
         gameObject.GetComponent<Outline>().enabled = false;
+        baseMaterial = GetComponent<Material>();
+    }
+
+    private void Update()
+    {
+
     }
 
     public void SetSelected(bool selected)
