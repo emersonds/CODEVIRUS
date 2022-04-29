@@ -2608,6 +2608,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   continentName: South America
   isInfected: 0
+  maxPopulation: 422500000
   totalPopulation: 422500000
   infectedCount: 0
   deathCount: 0
@@ -2937,6 +2938,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   continentName: Africa
   isInfected: 0
+  maxPopulation: 1.216e+9
   totalPopulation: 1.216e+9
   infectedCount: 0
   deathCount: 0
@@ -3616,6 +3618,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   continentName: Australia
   isInfected: 0
+  maxPopulation: 25690000
   totalPopulation: 25690000
   infectedCount: 0
   deathCount: 0
@@ -3974,6 +3977,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   continentName: Asia
   isInfected: 0
+  maxPopulation: 4.561e+9
   totalPopulation: 4.561e+9
   infectedCount: 0
   deathCount: 0
@@ -5254,6 +5258,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   continentName: Europe
   isInfected: 0
+  maxPopulation: 746400000
   totalPopulation: 746400000
   infectedCount: 0
   deathCount: 0
@@ -5874,6 +5879,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   continentName: North America
   isInfected: 0
+  maxPopulation: 579000000
   totalPopulation: 579000000
   infectedCount: 0
   deathCount: 0

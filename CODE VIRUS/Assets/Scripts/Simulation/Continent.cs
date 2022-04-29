@@ -9,6 +9,8 @@ public class Continent : MonoBehaviour
     [SerializeField]
     public bool isInfected = false;
     [SerializeField]
+    public float maxPopulation;
+    [SerializeField]
     public float totalPopulation;
     [SerializeField]
     public float infectedCount;

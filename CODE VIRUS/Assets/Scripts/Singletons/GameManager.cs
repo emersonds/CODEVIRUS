@@ -82,13 +82,6 @@ public class GameManager : MonoBehaviour
     public bool StartingContinentSelected { get { return startingContinentSelected; } }
     public GameObject StartingContinent { get { return startingContinent; } }
 
-    // Infected continents
-    [SerializeField]
-    private Dictionary<string, float> infectedContinentReferences = new Dictionary<string, float>();   // Names/infected populations of infected continents for reassignment
-    [SerializeField]
-    private Dictionary<string, float> dyingContinentReferences = new Dictionary<string, float>();   // Names/death populations of infected continents for reassignment
-    [SerializeField]
-    private List<Continent> infectedContinents = new List<Continent>(); // Continents that have been infected
 
     // How many of an upgrade the players owns
     private int infectCounter = 0;
@@ -119,6 +112,9 @@ public class GameManager : MonoBehaviour
 
     // Reference to Earth and continents
     private GameObject earth;
+    // Infected continents
+    [SerializeField]
+    private List<Continent> infectedContinents = new List<Continent>();
     [SerializeField]
     private List<Continent> continents = new List<Continent>();
 
@@ -129,6 +125,7 @@ public class GameManager : MonoBehaviour
     private bool pointsGeneratorRunning = false;
     private bool infectedGeneratorRunning = false;
     private bool deathGeneratorRunning = false;
+    private bool infectNeighborRunning = false;
 
     // Used for easier scene checking
     private string currentScene;
@@ -175,6 +172,10 @@ public class GameManager : MonoBehaviour
                 clickerScene = GameObject.Find("Clicker");
             if (simulationScene == null)
                 simulationScene = GameObject.Find("Simulation");
+            if (virus == null)
+                virus = GameObject.Find("Virus").GetComponent<Virus>();
+            if (earth == null)
+                earth = GameObject.Find("Earth");
 
             // Main menu loads simulation scene by default
             if (clickerScene.activeSelf)
@@ -221,6 +222,10 @@ public class GameManager : MonoBehaviour
                     // Check if timer running
                     if (!infectedGeneratorRunning)
                         StartCoroutine(GenerateInfected());
+
+                    // Check if infect neighbor timer is running
+                    if (!infectNeighborRunning)
+                        StartCoroutine(InfectNeighbor());
 
                     // Cost
                     mutationPoints -= infectCost;
@@ -352,46 +357,22 @@ public class GameManager : MonoBehaviour
         for (; ; )
         {
             // Checks if there are any infected continents
-            if (infectedContinentReferences.Count > 0)
+            if (infectedContinents.Count > 0)
             {
-                int j = 0;
-                List<string> infectedKeys = new List<string>(infectedContinentReferences.Keys);
-                foreach (string key in infectedKeys)
+                float newInfected = 0;
+                for (int i = 0; i < infectedContinents.Count; i++)
                 {
-                    // For each infected continent, add infected people to its population
-                    //if (infectedContinentReferences[key] + infectedPerMin <= the continent's total population idk
-                    infectedContinentReferences[key] += infectedPerMin;
-                    j++;
+                    float tempInfected = Mathf.Clamp(infectedContinents[i].infectedCount + infectedPerMin, 0, infectedContinents[i].totalPopulation);
+                    newInfected += tempInfected - infectedContinents[i].infectedCount;
+                    infectedContinents[i].infectedCount = tempInfected;
                 }
 
                 // Add total amount of infected people to total infected points
-                infectedPoints += infectedPerMin * j;
+                infectedPoints += newInfected;
             }
-
-            // This updates the actual continent's infected population
-            UpdateInfected();
 
             // Wait one second before looping again
             yield return new WaitForSeconds(1f);
-        }
-    }
-
-    private void UpdateInfected()
-    {
-        // Only update during Simulation
-        // This is because the game manager loses a reference to continents
-        // when the game switches to the clicker scene, so this prevents those errors
-        if (currentScene == "Simulation")
-        {
-            // Make sure a continent has been infected
-            if (infectedContinentReferences.Count > 0)
-            {
-                // Update actual continent's infected population
-                for (int i = 0; i < infectedContinentReferences.Count; i++)
-                {
-                    infectedContinents[i].infectedCount = infectedContinentReferences[infectedContinents[i].name];
-                }
-            }
         }
     }
 
@@ -407,50 +388,35 @@ public class GameManager : MonoBehaviour
             if (infectedPoints - deathsPerMin >= 0)
             {
                 // Checks if there are any infected continents
-                if (infectedContinentReferences.Count > 0)
+                if (infectedContinents.Count > 0)
                 {
-                    int j = 0;
-                    List<string> deathKeys = new List<string>(dyingContinentReferences.Keys);
-                    foreach (string key in deathKeys)
+                    float newDeaths = 0;
+                    float deadInfected = 0;
+                    for (int i = 0; i < infectedContinents.Count; i++)
                     {
-                        // For each infected continent, add infected people to its population
-                        dyingContinentReferences[key] += deathsPerMin;
-                        j++;
+                        float tempDeaths = Mathf.Clamp(infectedContinents[i].deathCount + deathsPerMin, 0, infectedContinents[i].maxPopulation);
+                        newDeaths += tempDeaths - infectedContinents[i].deathCount;
+                        infectedContinents[i].totalPopulation -= tempDeaths - infectedContinents[i].deathCount;
+                        infectedContinents[i].infectedCount -= tempDeaths - infectedContinents[i].deathCount;
+                        deadInfected += tempDeaths - infectedContinents[i].deathCount;
+                        infectedContinents[i].deathCount = tempDeaths;
                     }
 
                     // Add total amount of infected people to total infected points
-                    deathPoints += infectedPerMin * j;
+                    deathPoints += newDeaths;
+                    infectedPoints -= deadInfected;
                 }
             }
-
-            UpdateDeaths();
 
             yield return new WaitForSeconds(1f);
         }
     }
 
-    private void UpdateDeaths()
-    {
-        // Only update during Simulation
-        // This is because the game manager loses a reference to continents
-        // when the game switches to the clicker scene, so this prevents those errors
-        if (currentScene == "Simulation")
-        {
-            // Make sure a continent has been infected
-            if (infectedContinentReferences.Count > 0)
-            {
-                // Update actual continent's infected population
-                for (int i = 0; i < dyingContinentReferences.Count; i++)
-                {
-                    infectedContinents[i].deathCount = dyingContinentReferences[infectedContinents[i].name];
-                    infectedContinents[i].totalPopulation -= infectedContinents[i].deathCount;
-                }
-            }
-        }
-    }
-
     private IEnumerator InfectNeighbor()
     {
+        // Set timer running
+        infectNeighborRunning = true;
+
         // Initialize chanceToInfect variable
         float chanceToInfect = 0;
 
@@ -501,50 +467,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Called when the Clicker scene is loaded.
-    /// Saves a reference to the virus and makes its parts visible
-    /// </summary>
-    void UpdateVirus()
-    {
-        // Save reference to Virus
-        if (virus == null)
-            virus = GameObject.Find("Virus").GetComponent<Virus>();
-
-        // Make upgrades appear
-        MakeUpgradesVisible(virus.Mushrooms, infectCounter);
-        MakeUpgradesVisible(virus.Spikes, lethalCounter);
-        MakeUpgradesVisible(virus.Donuts, resilienceCounter);
-    }
-
-    /// <summary>
-    /// Called when the simulation scene is loaded.
-    /// Gets reference to earth and populates continents/infected continents.
-    /// </summary>
-    void UpdateContinentList()
-    {
-        // Save reference to Earth
-        if (earth == null)
-            earth = GameObject.Find("Earth");
-
-        // Assign all continents (children) to an array from Earth (parent)
-        for (int i = 0; i < earth.transform.childCount; i++)
-        {
-            continents.Add(earth.transform.GetChild(i).GetComponent<Continent>());
-        }
-
-        // Add all continents with matching infected names to infected array
-        for (int i = 0; i < continents.Count; i++)
-        {
-            // Check if the current continent should be infected
-            if (infectedContinentReferences.ContainsKey(continents[i].name))
-            {
-                infectedContinents.Add(continents[i]);
-                InfectContinent(continents[i].gameObject);
-            }
-        }
-    }
-
     public void SetStartingContinent(GameObject continent)
     {
         startingContinentSelected = true;
@@ -556,12 +478,6 @@ public class GameManager : MonoBehaviour
 
     public void InfectContinent(GameObject continent)
     {
-        if (!infectedContinentReferences.ContainsKey(continent.GetComponent<Continent>().name))
-        {
-            infectedContinentReferences.Add(continent.GetComponent<Continent>().name, continent.GetComponent<Continent>().infectedCount);
-            dyingContinentReferences.Add(continent.GetComponent<Continent>().name, continent.GetComponent<Continent>().infectedCount);
-        }
-
         if (!infectedContinents.Contains(continent.GetComponent<Continent>()))
             infectedContinents.Add(continent.GetComponent<Continent>());
 
@@ -583,23 +499,6 @@ public class GameManager : MonoBehaviour
                 simulationScene.SetActive(true);
                 clickerScene.SetActive(false);
                 break;
-        }
-    }
-
-    /// <summary>
-    /// Temporary method to make sure Virus keeps showing its upgrades on scene changes.
-    /// This is temporary until a save/load feature is implemented.
-    /// </summary>
-    /// <param name="arr">Virus part</param>
-    /// <param name="counter">Array Index: Which part to show.</param>
-    private void MakeUpgradesVisible(GameObject[] arr, int counter)
-    {
-        if (counter > 0)
-        {
-            for (int i = 0; i < counter; i++)
-            {
-                virus.ShowUpgrade(arr, i);
-            }
         }
     }
 
