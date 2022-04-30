@@ -21,21 +21,23 @@ public class Continent : MonoBehaviour
     [SerializeField]
     public Neighbor[] neighbors;
     [SerializeField]
-    Material infectionMaterial;
-    [SerializeField]
-    Material deathMaterial;
-
     private Material baseMaterial;
+    [SerializeField]
+    private Material infectionMaterial;
+
+    private Renderer rend;
 
     private void Start()
     {
         gameObject.GetComponent<Outline>().enabled = false;
-        baseMaterial = GetComponent<Material>();
+        rend = GetComponent<Renderer>();
+
+        rend.material = baseMaterial;
     }
 
     private void Update()
     {
-
+        rend.material.Lerp(baseMaterial, infectionMaterial, (infectedCount / totalPopulation));
     }
 
     public void SetSelected(bool selected)

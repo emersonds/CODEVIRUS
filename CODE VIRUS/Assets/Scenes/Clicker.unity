@@ -2626,6 +2626,8 @@ MonoBehaviour:
     continent: {fileID: 1503992194737134985}
     distance: 1000
     distanceType: ocean
+  baseMaterial: {fileID: 2100000, guid: 1595b9d9e9b28c64fa19dd1e3b27c5cf, type: 2}
+  infectionMaterial: {fileID: 2100000, guid: a51df3e0fb5e5c149aae12f308a4c44d, type: 2}
 --- !u!64 &488299888565623316
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2872,7 +2874,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 370b930ad24d18b4580c13079d0bee6d, type: 2}
+  - {fileID: 2100000, guid: 1595b9d9e9b28c64fa19dd1e3b27c5cf, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2964,6 +2966,8 @@ MonoBehaviour:
     continent: {fileID: 5133228218989924558}
     distance: 1200
     distanceType: ocean
+  baseMaterial: {fileID: 2100000, guid: 7b3073683ab30764fae7769271020973, type: 2}
+  infectionMaterial: {fileID: 2100000, guid: 5aaa73ee1c63f0f42823d2afe044a7ea, type: 2}
 --- !u!54 &1503992194737134986
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3632,6 +3636,8 @@ MonoBehaviour:
     continent: {fileID: 1503992194737134985}
     distance: 1200
     distanceType: ocean
+  baseMaterial: {fileID: 2100000, guid: 61cd83770fcd6ab418ca751f5b7e7714, type: 2}
+  infectionMaterial: {fileID: 2100000, guid: c99119303b60da942a6fc34b0fc484f8, type: 2}
 --- !u!54 &5133228218989924559
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3905,7 +3911,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7b3073683ab30764fae7769271020973, type: 2}
+  - {fileID: 2100000, guid: 61cd83770fcd6ab418ca751f5b7e7714, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3999,6 +4005,8 @@ MonoBehaviour:
     continent: {fileID: 5133228218989924558}
     distance: 700
     distanceType: ocean
+  baseMaterial: {fileID: 2100000, guid: 370b930ad24d18b4580c13079d0bee6d, type: 2}
+  infectionMaterial: {fileID: 2100000, guid: 3bb7653c37eeb7944838a8a7c92b8f95, type: 2}
 --- !u!54 &5914748977305056919
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5280,6 +5288,8 @@ MonoBehaviour:
     continent: {fileID: 488299888565623315}
     distance: 1200
     distanceType: ocean
+  baseMaterial: {fileID: 2100000, guid: 2863a66116972a5429e5b4f425e46146, type: 2}
+  infectionMaterial: {fileID: 2100000, guid: b77fc51a967cb4b47b9011b803736c70, type: 2}
 --- !u!54 &7268706168844562295
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5901,6 +5911,8 @@ MonoBehaviour:
     continent: {fileID: 5914748977305056918}
     distance: 1200
     distanceType: ocean
+  baseMaterial: {fileID: 2100000, guid: be3bf1bea86d9b54ab3c1781b4c21f8e, type: 2}
+  infectionMaterial: {fileID: 2100000, guid: 63225ad024f58854b9d1b08882581306, type: 2}
 --- !u!54 &7437272381185150834
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6656,7 +6668,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 370b930ad24d18b4580c13079d0bee6d, type: 2}
+  - {fileID: 2100000, guid: 2863a66116972a5429e5b4f425e46146, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6800,7 +6812,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 370b930ad24d18b4580c13079d0bee6d, type: 2}
+  - {fileID: 2100000, guid: be3bf1bea86d9b54ab3c1781b4c21f8e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
