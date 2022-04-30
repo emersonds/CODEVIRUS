@@ -396,10 +396,10 @@ public class GameManager : MonoBehaviour
                     {
                         float tempDeaths = Mathf.Clamp(infectedContinents[i].deathCount + deathsPerMin, 0, infectedContinents[i].maxPopulation);
                         newDeaths += tempDeaths - infectedContinents[i].deathCount;
-                        infectedContinents[i].totalPopulation -= tempDeaths - infectedContinents[i].deathCount;
-                        infectedContinents[i].infectedCount -= tempDeaths - infectedContinents[i].deathCount;
-                        deadInfected += tempDeaths - infectedContinents[i].deathCount;
+                        infectedContinents[i].totalPopulation = Mathf.Clamp(infectedContinents[i].totalPopulation - deathsPerMin, 0, infectedContinents[i].totalPopulation);
+                        infectedContinents[i].infectedCount = Mathf.Clamp(infectedContinents[i].infectedCount - deathsPerMin, 0, infectedContinents[i].infectedCount);
                         infectedContinents[i].deathCount = tempDeaths;
+                        deadInfected += tempDeaths - infectedContinents[i].deathCount;
                     }
 
                     // Add total amount of infected people to total infected points

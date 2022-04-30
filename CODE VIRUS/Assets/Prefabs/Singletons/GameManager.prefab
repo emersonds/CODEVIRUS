@@ -46,13 +46,13 @@ MonoBehaviour:
   defaultClickValue: 1
   mutationPoints: 0
   mutationPointsPerMin: 0
-  mutationPointsMultiplier: 13
+  mutationPointsMultiplier: 25
   infectedPoints: 0
   infectedPerMin: 0
-  infectedMultiplier: 43.8
+  infectedMultiplier: 50
   deathPoints: 0
   deathsPerMin: 0
-  deathMultiplier: 15.7
+  deathMultiplier: 35
   resilience: 0
   infectivity: 0
   baseMutationPointsRate: 20
@@ -65,10 +65,10 @@ MonoBehaviour:
   baseResilienceCost: 15
   baseClickerCost: 3
   baseIncomeCost: 10
-  infectedContinents: []
   mildBiome: 0.6
   moderateBiome: 0.45
   harshBiome: 0.275
   infectThreshold: 0.55
+  infectedContinents: []
   continents: []
   infectionStrength: 45
